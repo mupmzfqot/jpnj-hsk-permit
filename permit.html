@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Permit Digital HSK — JPNJ</title>
+</head>
+<body class="bg-gray-100">
+
+  <!-- Action Bar (no-print) -->
+  <div class="no-print bg-white border-b border-border shadow-sm sticky top-0 z-10">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <a href="status.html" class="flex items-center gap-1.5 text-gray-500 hover:text-primary text-sm transition">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          Kembali
+        </a>
+        <span class="text-gray-300">|</span>
+        <img src="src/logo.svg" alt="JPNJ" class="h-7 w-auto">
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5">
+          <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+          SAH / VALID
+        </span>
+        <button onclick="window.print()" class="flex items-center gap-2 bg-primary hover:bg-primary-light text-white px-4 py-2 rounded-lg text-sm font-medium transition">
+          <i data-lucide="printer" class="w-4 h-4"></i>
+          Cetak Permit
+        </button>
+        <button class="flex items-center gap-2 border border-border text-text hover:bg-surface px-4 py-2 rounded-lg text-sm font-medium transition">
+          <i data-lucide="download" class="w-4 h-4"></i>
+          Muat Turun PDF
+        </button>
+        <button class="flex items-center gap-2 border border-border text-text hover:bg-surface px-3 py-2 rounded-lg text-sm font-medium transition">
+          <i data-lucide="share-2" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Permit Card -->
+  <div class="py-8 px-4 no-print-padding">
+    <div class="max-w-3xl mx-auto bg-white shadow-xl rounded-lg overflow-hidden" id="permit-card">
+
+      <!-- Green Top Border -->
+      <div class="h-2 bg-primary"></div>
+
+      <!-- Header -->
+      <div class="px-10 pt-8 pb-6 border-b border-gray-200">
+        <div class="flex items-start justify-between">
+          <div class="flex items-center gap-4">
+            <img src="src/logo.svg" alt="Jabatan Perhutanan Negeri Johor" class="h-14 w-auto">
+            <p class="text-sm font-semibold text-text">PERMIT MEMASUKI HUTAN SIMPANAN KEKAL</p>
+          </div>
+          <div class="text-right">
+            <p class="text-xs text-gray-400 uppercase tracking-wider">No. Permit</p>
+            <p class="text-base font-bold text-accent font-heading">HSK-PERMIT-2024-00847</p>
+            <div class="mt-2 bg-green-100 border border-green-300 text-green-700 text-xs font-bold px-3 py-1 rounded-full inline-block">
+              SAH / VALID
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Permit Details -->
+      <div class="px-10 py-6 border-b border-gray-200">
+        <div class="grid grid-cols-2 gap-x-10 gap-y-4 text-sm">
+          <div>
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Nama Pemohon</p>
+            <p class="font-semibold text-text">Ahmad Firdaus bin Hamzah</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">No. Kad Pengenalan</p>
+            <p class="font-semibold text-text">850412-01-5231</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">No. Telefon</p>
+            <p class="font-semibold text-text">012-345 6789</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Warganegara</p>
+            <p class="font-semibold text-text">Malaysia</p>
+          </div>
+          <div class="col-span-2">
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">HSK Tujuan</p>
+            <p class="font-semibold text-text">Hutan Simpanan Kekal Gunung Ledang</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Daerah</p>
+            <p class="font-semibold text-text">Segahar, Johor</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Tujuan Lawatan</p>
+            <p class="font-semibold text-text">Rekreasi / Pendakian</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Tarikh Masuk</p>
+            <p class="font-semibold text-text">15 Disember 2024 (Ahad)</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Tarikh Keluar</p>
+            <p class="font-semibold text-text">17 Disember 2024 (Selasa) — 3 Hari</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Laluan</p>
+            <p class="font-semibold text-text">Laluan Puteri</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Bilangan Peserta</p>
+            <p class="font-semibold text-text">5 Orang</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Jumlah Bayaran</p>
+            <p class="font-bold text-primary text-base">RM 75.00</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Status Permit</p>
+            <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">SAH / VALID</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group Members Table -->
+      <div class="px-10 py-6 border-b border-gray-200">
+        <h3 class="font-bold text-text text-sm font-heading mb-4 flex items-center gap-2">
+          <i data-lucide="users" class="w-4 h-4 text-primary"></i>
+          Senarai Ahli Kumpulan
+        </h3>
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-primary text-white">
+              <th class="text-left px-4 py-2.5 font-semibold text-xs">No.</th>
+              <th class="text-left px-4 py-2.5 font-semibold text-xs">Nama Penuh</th>
+              <th class="text-left px-4 py-2.5 font-semibold text-xs">No. Kad Pengenalan</th>
+              <th class="text-center px-4 py-2.5 font-semibold text-xs">Umur</th>
+              <th class="text-left px-4 py-2.5 font-semibold text-xs">Warganegara</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-100">
+              <td class="px-4 py-2.5 text-gray-500">1</td>
+              <td class="px-4 py-2.5 font-medium text-text">Ahmad Firdaus bin Hamzah</td>
+              <td class="px-4 py-2.5 text-gray-600">850412-01-5231</td>
+              <td class="px-4 py-2.5 text-center text-gray-600">39</td>
+              <td class="px-4 py-2.5 text-gray-600">Malaysia</td>
+            </tr>
+            <tr class="border-b border-gray-100 bg-gray-50">
+              <td class="px-4 py-2.5 text-gray-500">2</td>
+              <td class="px-4 py-2.5 font-medium text-text">Nurul Ain Binti Razali</td>
+              <td class="px-4 py-2.5 text-gray-600">900623-14-6782</td>
+              <td class="px-4 py-2.5 text-center text-gray-600">34</td>
+              <td class="px-4 py-2.5 text-gray-600">Malaysia</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="px-4 py-2.5 text-gray-500">3</td>
+              <td class="px-4 py-2.5 font-medium text-text">Mohd Hafiz bin Ismail</td>
+              <td class="px-4 py-2.5 text-gray-600">880315-07-4521</td>
+              <td class="px-4 py-2.5 text-center text-gray-600">36</td>
+              <td class="px-4 py-2.5 text-gray-600">Malaysia</td>
+            </tr>
+            <tr class="border-b border-gray-100 bg-gray-50">
+              <td class="px-4 py-2.5 text-gray-500">4</td>
+              <td class="px-4 py-2.5 font-medium text-text">Siti Rahayu Binti Omar</td>
+              <td class="px-4 py-2.5 text-gray-600">920801-05-3341</td>
+              <td class="px-4 py-2.5 text-center text-gray-600">32</td>
+              <td class="px-4 py-2.5 text-gray-600">Malaysia</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 text-gray-500">5</td>
+              <td class="px-4 py-2.5 font-medium text-text">Faizal bin Yusof</td>
+              <td class="px-4 py-2.5 text-gray-600">870509-11-2234</td>
+              <td class="px-4 py-2.5 text-center text-gray-600">37</td>
+              <td class="px-4 py-2.5 text-gray-600">Malaysia</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- QR + Stamp Section -->
+      <div class="px-10 py-6 border-b border-gray-200">
+        <div class="grid grid-cols-2 gap-10">
+          <!-- QR Code -->
+          <div class="text-center">
+            <div class="w-40 h-40 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center mx-auto mb-3">
+              <div class="text-center">
+                <i data-lucide="qr-code" class="w-16 h-16 text-gray-300 mx-auto"></i>
+                <p class="text-xs text-gray-400 mt-1">QR Code</p>
+              </div>
+            </div>
+            <p class="text-xs text-gray-500">Imbas untuk pengesahan permit</p>
+            <p class="text-xs text-gray-400 font-mono mt-1">HSK-PERMIT-2024-00847</p>
+          </div>
+          <!-- Circular Stamp -->
+          <div class="text-center flex flex-col items-center justify-center">
+            <div class="w-36 h-36 rounded-full border-4 border-primary flex items-center justify-center relative mb-3">
+              <div class="w-28 h-28 rounded-full border-2 border-primary/30 flex items-center justify-center">
+                <div class="text-center">
+                  <p class="text-xs font-bold text-primary leading-tight">SAH</p>
+                  <i data-lucide="tree-pine" class="w-6 h-6 text-primary mx-auto my-1"></i>
+                  <p class="text-xs font-bold text-primary leading-tight">JPNJ 2024</p>
+                </div>
+              </div>
+            </div>
+            <div class="text-center mt-2 border-t border-gray-300 pt-2 w-40">
+              <p class="text-xs text-gray-600 font-medium">Pengarah Perhutanan</p>
+              <p class="text-xs text-gray-500">Negeri Johor</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Permit Conditions -->
+      <div class="px-10 py-6 bg-gray-50">
+        <h4 class="font-bold text-text text-xs uppercase tracking-wider mb-3 font-heading">Syarat-Syarat Permit</h4>
+        <ol class="space-y-1.5 text-xs text-gray-600 list-decimal list-inside">
+          <li>Permit ini hanya sah untuk tempoh dan bilangan ahli yang dinyatakan di atas.</li>
+          <li>Pemegat permit hendaklah mematuhi semua peraturan dan undang-undang hutan semasa berada di kawasan HSK.</li>
+          <li>Sebarang aktiviti pemburuan, penebangan pokok atau pencemaran alam sekitar adalah dilarang sama sekali.</li>
+          <li>Pemegat permit bertanggungjawab terhadap keselamatan semua ahli kumpulan sepanjang tempoh lawatan.</li>
+          <li>Permit ini mesti dibawa bersama pada setiap masa dan ditunjukkan kepada pegawai perhutanan apabila diminta.</li>
+        </ol>
+        <p class="text-xs text-gray-400 mt-4 border-t border-gray-200 pt-3">
+          Permit ini dikeluarkan oleh Jabatan Perhutanan Negeri Johor. Sebarang pertanyaan, hubungi: 07-223 7471 | jpnj@johor.gov.my
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

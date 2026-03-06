@@ -1,0 +1,31 @@
+@import '@fontsource/merriweather';
+@import '@fontsource/plus-jakarta-sans';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary:       #2d6a2d;
+  --color-primary-dark:  #1a3d1a;
+  --color-primary-light: #3a7d3a;
+  --color-accent:        #c8a227;
+  --color-surface:       #f0f7f0;
+  --color-border:        #d4e4d4;
+  --color-text:          #1c2b1c;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Merriweather', serif;
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+}

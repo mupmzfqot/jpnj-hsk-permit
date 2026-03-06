@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Admin — JPNJ</title>
+</head>
+<body class="bg-surface">
+<div class="flex min-h-screen" x-data="{ sidebarOpen: true }">
+
+  <!-- Sidebar Overlay (mobile) -->
+  <div x-show="sidebarOpen" @click="sidebarOpen = false" class="fixed inset-0 bg-black/50 z-20 lg:hidden" style="display:none"></div>
+
+  <!-- Sidebar -->
+  <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'" class="fixed inset-y-0 left-0 w-64 bg-primary-dark z-30 flex flex-col transition-transform duration-200">
+    <div class="px-5 py-4 border-b border-white/10">
+      <img src="../src/logo.svg" alt="Jabatan Perhutanan Negeri Johor" class="h-8 w-auto">
+      <div class="text-white/45 text-xs mt-1">Admin Panel</div>
+    </div>
+    <nav class="flex-1 px-3 py-4 overflow-y-auto space-y-0.5">
+      <p class="text-white/35 text-xs font-semibold uppercase tracking-widest px-3 py-1.5">Utama</p>
+      <a href="index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-r-lg text-sm text-white font-medium border-l-4 border-accent bg-white/10 transition">
+        <i data-lucide="layout-dashboard" class="w-4 h-4"></i>Dashboard
+      </a>
+      <p class="text-white/35 text-xs font-semibold uppercase tracking-widest px-3 pt-4 pb-1.5">Permohonan</p>
+      <a href="applications.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="list" class="w-4 h-4"></i>Senarai Permohonan
+      </a>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="file-plus" class="w-4 h-4"></i>Permohonan Baru
+      </a>
+      <a href="#" class="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <span class="flex items-center gap-3"><i data-lucide="clock" class="w-4 h-4"></i>Semakan Pending</span>
+        <span class="bg-yellow-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[1.25rem] text-center">43</span>
+      </a>
+      <p class="text-white/35 text-xs font-semibold uppercase tracking-widest px-3 pt-4 pb-1.5">Pengurusan</p>
+      <a href="hsk.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="trees" class="w-4 h-4"></i>Pengurusan HSK
+      </a>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="users" class="w-4 h-4"></i>Pengguna
+      </a>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="user-check" class="w-4 h-4"></i>Pegawai
+      </a>
+      <p class="text-white/35 text-xs font-semibold uppercase tracking-widest px-3 pt-4 pb-1.5">Laporan</p>
+      <a href="reports.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="bar-chart-3" class="w-4 h-4"></i>Laporan &amp; Statistik
+      </a>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="download" class="w-4 h-4"></i>Eksport Data
+      </a>
+      <p class="text-white/35 text-xs font-semibold uppercase tracking-widest px-3 pt-4 pb-1.5">Sistem</p>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="settings" class="w-4 h-4"></i>Tetapan
+      </a>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="activity" class="w-4 h-4"></i>Log Aktiviti
+      </a>
+    </nav>
+    <div class="px-4 py-4 border-t border-white/10">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+          <span class="text-white font-bold text-sm">ZK</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-white text-sm font-medium truncate">Encik Zulkifli</p>
+          <p class="text-white/45 text-xs truncate">Pegawai Perhutanan</p>
+        </div>
+        <a href="../index.html" class="text-white/45 hover:text-white transition" title="Log Keluar">
+          <i data-lucide="log-out" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="flex-1 flex flex-col min-h-screen transition-all duration-200" :class="sidebarOpen ? 'ml-64' : 'ml-0'">
+
+    <!-- Top Navbar -->
+    <header class="bg-white h-16 border-b border-border shadow-sm flex items-center px-6 sticky top-0 z-20" x-data="{ dropOpen: false }">
+      <div class="flex items-center gap-3 flex-1">
+        <button @click="sidebarOpen = !sidebarOpen" class="text-gray-400 hover:text-text p-1 rounded-lg transition">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+        <nav class="flex items-center gap-1 text-sm">
+          <a href="#" class="text-gray-400 hover:text-primary transition">Utama</a>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-300"></i>
+          <span class="text-text font-medium">Dashboard</span>
+        </nav>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="relative">
+          <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+          <input type="text" placeholder="Cari permohonan..." class="pl-9 pr-4 py-2 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary w-52 bg-surface" />
+        </div>
+        <button class="relative p-2 text-gray-500 hover:text-text hover:bg-surface rounded-lg transition">
+          <i data-lucide="bell" class="w-5 h-5"></i>
+          <span class="absolute top-1 right-1 w-4 h-4 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center">3</span>
+        </button>
+        <div class="relative">
+          <button @click="dropOpen = !dropOpen" class="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-surface transition">
+            <div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center">
+              <span class="text-white font-bold text-xs">ZK</span>
+            </div>
+            <span class="text-sm font-medium text-text">Encik Zulkifli</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-400"></i>
+          </button>
+          <div x-show="dropOpen" @click.away="dropOpen = false" x-transition class="absolute right-0 mt-1 w-48 bg-white border border-border rounded-xl shadow-lg py-1 z-50" style="display:none">
+            <a href="#" class="flex items-center gap-2.5 px-4 py-2.5 text-sm text-text hover:bg-surface transition"><i data-lucide="user" class="w-4 h-4 text-gray-400"></i>Profil Saya</a>
+            <a href="#" class="flex items-center gap-2.5 px-4 py-2.5 text-sm text-text hover:bg-surface transition"><i data-lucide="settings" class="w-4 h-4 text-gray-400"></i>Tetapan</a>
+            <div class="border-t border-border my-1"></div>
+            <a href="../index.html" class="flex items-center gap-2.5 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition"><i data-lucide="log-out" class="w-4 h-4"></i>Log Keluar</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="flex-1 p-6">
+
+      <!-- Page Title -->
+      <div class="mb-6">
+        <h1 class="text-2xl font-bold text-text font-heading">Dashboard</h1>
+        <p class="text-gray-500 text-sm mt-1">Selamat datang kembali, Encik Zulkifli. Berikut adalah ringkasan terkini.</p>
+      </div>
+
+      <!-- Stat Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-6">
+        <div class="bg-white rounded-xl border border-border shadow-sm p-5">
+          <div class="flex items-center justify-between mb-3">
+            <p class="text-sm text-gray-500 font-medium">Jumlah Permohonan</p>
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <i data-lucide="file-text" class="w-5 h-5 text-blue-600"></i>
+            </div>
+          </div>
+          <p class="text-3xl font-bold text-text font-heading">1,247</p>
+          <p class="text-xs text-green-600 mt-1.5 flex items-center gap-1"><i data-lucide="trending-up" class="w-3.5 h-3.5"></i>+12% bulan ini</p>
+        </div>
+        <div class="bg-white rounded-xl border-l-4 border-l-yellow-400 border-y border-r border-border shadow-sm p-5">
+          <div class="flex items-center justify-between mb-3">
+            <p class="text-sm text-gray-500 font-medium">Permohonan Pending</p>
+            <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+              <i data-lucide="clock" class="w-5 h-5 text-yellow-600"></i>
+            </div>
+          </div>
+          <p class="text-3xl font-bold text-text font-heading">43</p>
+          <p class="text-xs text-yellow-600 mt-1.5 flex items-center gap-1"><i data-lucide="alert-circle" class="w-3.5 h-3.5"></i>Perlu tindakan segera</p>
+        </div>
+        <div class="bg-white rounded-xl border border-border shadow-sm p-5">
+          <div class="flex items-center justify-between mb-3">
+            <p class="text-sm text-gray-500 font-medium">Diluluskan Hari Ini</p>
+            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+              <i data-lucide="check-circle" class="w-5 h-5 text-green-600"></i>
+            </div>
+          </div>
+          <p class="text-3xl font-bold text-text font-heading">28</p>
+          <p class="text-xs text-gray-400 mt-1.5">Disember 2024</p>
+        </div>
+        <div class="bg-white rounded-xl border border-border shadow-sm p-5">
+          <div class="flex items-center justify-between mb-3">
+            <p class="text-sm text-gray-500 font-medium">Jumlah Hasil</p>
+            <div class="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center">
+              <i data-lucide="banknote" class="w-5 h-5 text-teal-600"></i>
+            </div>
+          </div>
+          <p class="text-3xl font-bold text-text font-heading">RM 18,650</p>
+          <p class="text-xs text-gray-400 mt-1.5">Bulan Disember</p>
+        </div>
+      </div>
+
+      <!-- Recent Applications Table -->
+      <div class="bg-white rounded-xl border border-border shadow-sm mb-6">
+        <div class="px-6 py-4 border-b border-border flex items-center justify-between">
+          <h2 class="font-bold text-text font-heading flex items-center gap-2">
+            <i data-lucide="list" class="w-4 h-4 text-primary"></i>
+            Permohonan Terkini
+          </h2>
+          <a href="applications.html" class="text-sm text-primary hover:text-primary-light font-medium flex items-center gap-1 transition">
+            Lihat Semua <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-surface border-b border-border">
+                <th class="text-left px-5 py-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">No. Rujukan</th>
+                <th class="text-left px-5 py-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">Nama Pemohon</th>
+                <th class="text-left px-5 py-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">HSK</th>
+                <th class="text-left px-5 py-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">Tarikh Mohon</th>
+                <th class="text-center px-5 py-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">Bil.</th>
+                <th class="text-left px-5 py-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">Status</th>
+                <th class="text-center px-5 py-3 font-semibold text-gray-500 text-xs uppercase tracking-wide">Tindakan</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              <tr class="hover:bg-surface/50 transition">
+                <td class="px-5 py-3.5 font-mono text-xs text-primary font-semibold">HSK-2024-00847</td>
+                <td class="px-5 py-3.5 font-medium text-text">Ahmad Firdaus bin Hamzah</td>
+                <td class="px-5 py-3.5 text-gray-600">Gunung Ledang</td>
+                <td class="px-5 py-3.5 text-gray-500">10 Dis 2024</td>
+                <td class="px-5 py-3.5 text-center text-gray-600">5</td>
+                <td class="px-5 py-3.5"><span class="bg-green-100 text-green-700 text-xs font-semibold px-2.5 py-1 rounded-full">Diluluskan</span></td>
+                <td class="px-5 py-3.5">
+                  <div class="flex items-center justify-center gap-1">
+                    <a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-4 h-4"></i></a>
+                    <button class="p-1.5 text-gray-400 hover:bg-surface rounded transition"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+                    <button class="p-1.5 text-red-400 hover:bg-red-50 rounded transition"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-surface/50 transition">
+                <td class="px-5 py-3.5 font-mono text-xs text-primary font-semibold">HSK-2024-00846</td>
+                <td class="px-5 py-3.5 font-medium text-text">Nurul Ain Binti Razali</td>
+                <td class="px-5 py-3.5 text-gray-600">Endau-Rompin</td>
+                <td class="px-5 py-3.5 text-gray-500">10 Dis 2024</td>
+                <td class="px-5 py-3.5 text-center text-gray-600">3</td>
+                <td class="px-5 py-3.5"><span class="bg-yellow-100 text-yellow-700 text-xs font-semibold px-2.5 py-1 rounded-full">Dalam Semakan</span></td>
+                <td class="px-5 py-3.5">
+                  <div class="flex items-center justify-center gap-1">
+                    <a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-4 h-4"></i></a>
+                    <button class="p-1.5 text-gray-400 hover:bg-surface rounded transition"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+                    <button class="p-1.5 text-red-400 hover:bg-red-50 rounded transition"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-surface/50 transition">
+                <td class="px-5 py-3.5 font-mono text-xs text-primary font-semibold">HSK-2024-00845</td>
+                <td class="px-5 py-3.5 font-medium text-text">Mohd Hafiz bin Ismail</td>
+                <td class="px-5 py-3.5 text-gray-600">Gunung Pulai</td>
+                <td class="px-5 py-3.5 text-gray-500">09 Dis 2024</td>
+                <td class="px-5 py-3.5 text-center text-gray-600">8</td>
+                <td class="px-5 py-3.5"><span class="bg-blue-100 text-blue-700 text-xs font-semibold px-2.5 py-1 rounded-full">Baru</span></td>
+                <td class="px-5 py-3.5">
+                  <div class="flex items-center justify-center gap-1">
+                    <a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-4 h-4"></i></a>
+                    <button class="p-1.5 text-gray-400 hover:bg-surface rounded transition"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+                    <button class="p-1.5 text-red-400 hover:bg-red-50 rounded transition"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-surface/50 transition">
+                <td class="px-5 py-3.5 font-mono text-xs text-primary font-semibold">HSK-2024-00844</td>
+                <td class="px-5 py-3.5 font-medium text-text">Siti Rahayu Binti Omar</td>
+                <td class="px-5 py-3.5 text-gray-600">Panti</td>
+                <td class="px-5 py-3.5 text-gray-500">09 Dis 2024</td>
+                <td class="px-5 py-3.5 text-center text-gray-600">2</td>
+                <td class="px-5 py-3.5"><span class="bg-teal-100 text-teal-700 text-xs font-semibold px-2.5 py-1 rounded-full">Dibayar</span></td>
+                <td class="px-5 py-3.5">
+                  <div class="flex items-center justify-center gap-1">
+                    <a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-4 h-4"></i></a>
+                    <button class="p-1.5 text-gray-400 hover:bg-surface rounded transition"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+                    <button class="p-1.5 text-red-400 hover:bg-red-50 rounded transition"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-surface/50 transition">
+                <td class="px-5 py-3.5 font-mono text-xs text-primary font-semibold">HSK-2024-00843</td>
+                <td class="px-5 py-3.5 font-medium text-text">Faizal bin Yusof</td>
+                <td class="px-5 py-3.5 text-gray-600">Gunung Arong</td>
+                <td class="px-5 py-3.5 text-gray-500">08 Dis 2024</td>
+                <td class="px-5 py-3.5 text-center text-gray-600">6</td>
+                <td class="px-5 py-3.5"><span class="bg-green-100 text-green-700 text-xs font-semibold px-2.5 py-1 rounded-full">Diluluskan</span></td>
+                <td class="px-5 py-3.5">
+                  <div class="flex items-center justify-center gap-1">
+                    <a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-4 h-4"></i></a>
+                    <button class="p-1.5 text-gray-400 hover:bg-surface rounded transition"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+                    <button class="p-1.5 text-red-400 hover:bg-red-50 rounded transition"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-surface/50 transition">
+                <td class="px-5 py-3.5 font-mono text-xs text-primary font-semibold">HSK-2024-00842</td>
+                <td class="px-5 py-3.5 font-medium text-text">Azman bin Rashid</td>
+                <td class="px-5 py-3.5 text-gray-600">Gunung Belumut</td>
+                <td class="px-5 py-3.5 text-gray-500">08 Dis 2024</td>
+                <td class="px-5 py-3.5 text-center text-gray-600">4</td>
+                <td class="px-5 py-3.5"><span class="bg-red-100 text-red-700 text-xs font-semibold px-2.5 py-1 rounded-full">Ditolak</span></td>
+                <td class="px-5 py-3.5">
+                  <div class="flex items-center justify-center gap-1">
+                    <a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-4 h-4"></i></a>
+                    <button class="p-1.5 text-gray-400 hover:bg-surface rounded transition"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+                    <button class="p-1.5 text-red-400 hover:bg-red-50 rounded transition"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-surface/50 transition">
+                <td class="px-5 py-3.5 font-mono text-xs text-primary font-semibold">HSK-2024-00841</td>
+                <td class="px-5 py-3.5 font-medium text-text">Rozita binti Hassan</td>
+                <td class="px-5 py-3.5 text-gray-600">Gunung Ledang</td>
+                <td class="px-5 py-3.5 text-gray-500">07 Dis 2024</td>
+                <td class="px-5 py-3.5 text-center text-gray-600">10</td>
+                <td class="px-5 py-3.5"><span class="bg-yellow-100 text-yellow-700 text-xs font-semibold px-2.5 py-1 rounded-full">Dalam Semakan</span></td>
+                <td class="px-5 py-3.5">
+                  <div class="flex items-center justify-center gap-1">
+                    <a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-4 h-4"></i></a>
+                    <button class="p-1.5 text-gray-400 hover:bg-surface rounded transition"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+                    <button class="p-1.5 text-red-400 hover:bg-red-50 rounded transition"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-surface/50 transition">
+                <td class="px-5 py-3.5 font-mono text-xs text-primary font-semibold">HSK-2024-00840</td>
+                <td class="px-5 py-3.5 font-medium text-text">Khairul bin Anwar</td>
+                <td class="px-5 py-3.5 text-gray-600">Endau-Rompin</td>
+                <td class="px-5 py-3.5 text-gray-500">07 Dis 2024</td>
+                <td class="px-5 py-3.5 text-center text-gray-600">7</td>
+                <td class="px-5 py-3.5"><span class="bg-blue-100 text-blue-700 text-xs font-semibold px-2.5 py-1 rounded-full">Baru</span></td>
+                <td class="px-5 py-3.5">
+                  <div class="flex items-center justify-center gap-1">
+                    <a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-4 h-4"></i></a>
+                    <button class="p-1.5 text-gray-400 hover:bg-surface rounded transition"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+                    <button class="p-1.5 text-red-400 hover:bg-red-50 rounded transition"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Charts Row -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+
+        <!-- Monthly Bar Chart -->
+        <div class="bg-white rounded-xl border border-border shadow-sm p-6">
+          <h3 class="font-bold text-text font-heading text-sm mb-5">Permohonan 6 Bulan Terakhir</h3>
+          <div class="flex items-end justify-around gap-2 h-36">
+            <div class="flex flex-col items-center gap-2 flex-1">
+              <span class="text-xs text-gray-500 font-medium">87</span>
+              <div class="w-full bg-primary/20 rounded-t-sm hover:bg-primary/30 transition relative group" style="height:63%">
+                <div class="absolute inset-0 bg-primary rounded-t-sm opacity-70 group-hover:opacity-100 transition"></div>
+              </div>
+              <span class="text-xs text-gray-500">Jul</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 flex-1">
+              <span class="text-xs text-gray-500 font-medium">103</span>
+              <div class="w-full bg-primary rounded-t-sm hover:bg-primary-light transition" style="height:74%"></div>
+              <span class="text-xs text-gray-500">Ogo</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 flex-1">
+              <span class="text-xs text-gray-500 font-medium">91</span>
+              <div class="w-full bg-primary rounded-t-sm hover:bg-primary-light transition" style="height:66%"></div>
+              <span class="text-xs text-gray-500">Sep</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 flex-1">
+              <span class="text-xs text-gray-500 font-medium">108</span>
+              <div class="w-full bg-primary rounded-t-sm hover:bg-primary-light transition" style="height:78%"></div>
+              <span class="text-xs text-gray-500">Okt</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 flex-1">
+              <span class="text-xs text-gray-500 font-medium">115</span>
+              <div class="w-full bg-primary rounded-t-sm hover:bg-primary-light transition" style="height:83%"></div>
+              <span class="text-xs text-gray-500">Nov</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 flex-1">
+              <span class="text-xs text-accent font-bold">139</span>
+              <div class="w-full bg-accent rounded-t-sm hover:bg-yellow-500 transition" style="height:100%"></div>
+              <span class="text-xs text-gray-500 font-medium">Dis</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- HSK Horizontal Bar Chart -->
+        <div class="bg-white rounded-xl border border-border shadow-sm p-6">
+          <h3 class="font-bold text-text font-heading text-sm mb-5">Permohonan Mengikut HSK</h3>
+          <div class="space-y-3.5">
+            <div>
+              <div class="flex justify-between text-xs text-gray-500 mb-1.5">
+                <span>Gunung Ledang</span><span class="font-semibold text-text">312 (25%)</span>
+              </div>
+              <div class="h-2 bg-surface rounded-full"><div class="h-2 bg-primary rounded-full" style="width:76%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs text-gray-500 mb-1.5">
+                <span>Endau-Rompin</span><span class="font-semibold text-text">198 (16%)</span>
+              </div>
+              <div class="h-2 bg-surface rounded-full"><div class="h-2 bg-primary rounded-full" style="width:49%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs text-gray-500 mb-1.5">
+                <span>Gunung Pulai</span><span class="font-semibold text-text">267 (21%)</span>
+              </div>
+              <div class="h-2 bg-surface rounded-full"><div class="h-2 bg-primary rounded-full" style="width:65%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs text-gray-500 mb-1.5">
+                <span>Gunung Arong</span><span class="font-semibold text-text">156 (13%)</span>
+              </div>
+              <div class="h-2 bg-surface rounded-full"><div class="h-2 bg-primary/70 rounded-full" style="width:38%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs text-gray-500 mb-1.5">
+                <span>Gunung Belumut</span><span class="font-semibold text-text">189 (15%)</span>
+              </div>
+              <div class="h-2 bg-surface rounded-full"><div class="h-2 bg-primary/70 rounded-full" style="width:46%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs text-gray-500 mb-1.5">
+                <span>Panti</span><span class="font-semibold text-text">125 (10%)</span>
+              </div>
+              <div class="h-2 bg-surface rounded-full"><div class="h-2 bg-primary/50 rounded-full" style="width:31%"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

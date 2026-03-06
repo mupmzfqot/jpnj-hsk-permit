@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Senarai Permohonan — JPNJ Admin</title>
+</head>
+<body class="bg-surface">
+<div class="flex min-h-screen"
+  x-data="{
+    selected: [],
+    allSelected: false,
+    toggleAll() {
+      if (this.allSelected) { this.selected = []; this.allSelected = false; }
+      else { this.selected = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; this.allSelected = true; }
+    },
+    toggle(id) {
+      const i = this.selected.indexOf(id);
+      if (i > -1) this.selected.splice(i, 1); else this.selected.push(id);
+      this.allSelected = this.selected.length === 15;
+    }
+  }">
+
+  <!-- Sidebar -->
+  <aside class="fixed inset-y-0 left-0 w-64 bg-primary-dark z-30 flex flex-col">
+    <div class="px-5 py-4 border-b border-white/10">
+      <img src="../src/logo.svg" alt="Jabatan Perhutanan Negeri Johor" class="h-8 w-auto">
+      <div class="text-white/45 text-xs mt-1">Admin Panel</div>
+    </div>
+    <nav class="flex-1 px-3 py-4 overflow-y-auto space-y-0.5">
+      <p class="text-white/35 text-xs font-semibold uppercase tracking-widest px-3 py-1.5">Utama</p>
+      <a href="index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="layout-dashboard" class="w-4 h-4"></i>Dashboard
+      </a>
+      <p class="text-white/35 text-xs font-semibold uppercase tracking-widest px-3 pt-4 pb-1.5">Permohonan</p>
+      <a href="applications.html" class="flex items-center gap-3 px-3 py-2.5 rounded-r-lg text-sm text-white font-medium border-l-4 border-accent bg-white/10 transition">
+        <i data-lucide="list" class="w-4 h-4"></i>Senarai Permohonan
+      </a>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="file-plus" class="w-4 h-4"></i>Permohonan Baru
+      </a>
+      <a href="#" class="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <span class="flex items-center gap-3"><i data-lucide="clock" class="w-4 h-4"></i>Semakan Pending</span>
+        <span class="bg-yellow-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">43</span>
+      </a>
+      <p class="text-white/35 text-xs font-semibold uppercase tracking-widest px-3 pt-4 pb-1.5">Pengurusan</p>
+      <a href="hsk.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="trees" class="w-4 h-4"></i>Pengurusan HSK
+      </a>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="users" class="w-4 h-4"></i>Pengguna
+      </a>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="user-check" class="w-4 h-4"></i>Pegawai
+      </a>
+      <p class="text-white/35 text-xs font-semibold uppercase tracking-widest px-3 pt-4 pb-1.5">Laporan</p>
+      <a href="reports.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="bar-chart-3" class="w-4 h-4"></i>Laporan &amp; Statistik
+      </a>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="download" class="w-4 h-4"></i>Eksport Data
+      </a>
+      <p class="text-white/35 text-xs font-semibold uppercase tracking-widest px-3 pt-4 pb-1.5">Sistem</p>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="settings" class="w-4 h-4"></i>Tetapan
+      </a>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="activity" class="w-4 h-4"></i>Log Aktiviti
+      </a>
+    </nav>
+    <div class="px-4 py-4 border-t border-white/10">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+          <span class="text-white font-bold text-sm">ZK</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-white text-sm font-medium truncate">Encik Zulkifli</p>
+          <p class="text-white/45 text-xs truncate">Pegawai Perhutanan</p>
+        </div>
+        <a href="../index.html" class="text-white/45 hover:text-white transition"><i data-lucide="log-out" class="w-4 h-4"></i></a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="flex-1 ml-64 flex flex-col min-h-screen">
+
+    <!-- Top Navbar -->
+    <header class="bg-white h-16 border-b border-border shadow-sm flex items-center px-6 sticky top-0 z-20" x-data="{ dropOpen: false }">
+      <div class="flex items-center gap-3 flex-1">
+        <button class="text-gray-400 hover:text-text p-1 rounded-lg transition"><i data-lucide="menu" class="w-5 h-5"></i></button>
+        <nav class="flex items-center gap-1 text-sm">
+          <a href="index.html" class="text-gray-400 hover:text-primary transition">Utama</a>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-300"></i>
+          <span class="text-text font-medium">Senarai Permohonan</span>
+        </nav>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="relative">
+          <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+          <input type="text" placeholder="Cari permohonan..." class="pl-9 pr-4 py-2 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary w-52 bg-surface" />
+        </div>
+        <button class="relative p-2 text-gray-500 hover:text-text hover:bg-surface rounded-lg transition">
+          <i data-lucide="bell" class="w-5 h-5"></i>
+          <span class="absolute top-1 right-1 w-4 h-4 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center">3</span>
+        </button>
+        <div class="relative">
+          <button @click="dropOpen = !dropOpen" class="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-surface transition">
+            <div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center"><span class="text-white font-bold text-xs">ZK</span></div>
+            <span class="text-sm font-medium text-text">Encik Zulkifli</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-400"></i>
+          </button>
+          <div x-show="dropOpen" @click.away="dropOpen = false" x-transition class="absolute right-0 mt-1 w-48 bg-white border border-border rounded-xl shadow-lg py-1 z-50" style="display:none">
+            <a href="#" class="flex items-center gap-2.5 px-4 py-2.5 text-sm text-text hover:bg-surface transition"><i data-lucide="user" class="w-4 h-4 text-gray-400"></i>Profil Saya</a>
+            <div class="border-t border-border my-1"></div>
+            <a href="../index.html" class="flex items-center gap-2.5 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition"><i data-lucide="log-out" class="w-4 h-4"></i>Log Keluar</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1 p-6">
+      <!-- Header Row -->
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h1 class="text-2xl font-bold text-text font-heading">Senarai Permohonan</h1>
+          <p class="text-gray-500 text-sm mt-1">Urus dan semak semua permohonan permit HSK</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="flex items-center gap-2 border border-border text-text hover:bg-white px-4 py-2 rounded-lg text-sm font-medium transition">
+            <i data-lucide="table" class="w-4 h-4"></i>Eksport Excel
+          </button>
+          <button class="flex items-center gap-2 border border-border text-text hover:bg-white px-4 py-2 rounded-lg text-sm font-medium transition">
+            <i data-lucide="file-text" class="w-4 h-4"></i>Eksport PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter Card -->
+      <div class="bg-white rounded-xl border border-border shadow-sm p-5 mb-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+          <div class="lg:col-span-2">
+            <div class="relative">
+              <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+              <input type="text" placeholder="Cari No. Rujukan atau Nama..." class="pl-9 pr-4 py-2.5 w-full border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary transition" />
+            </div>
+          </div>
+          <select class="border border-border rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+            <option value="">Semua Status</option>
+            <option>Baru</option>
+            <option>Dalam Semakan</option>
+            <option>Diluluskan</option>
+            <option>Ditolak</option>
+            <option>Dibayar</option>
+          </select>
+          <select class="border border-border rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+            <option value="">Semua HSK</option>
+            <option>Gunung Ledang</option>
+            <option>Endau-Rompin</option>
+            <option>Gunung Pulai</option>
+            <option>Gunung Arong</option>
+            <option>Gunung Belumut</option>
+            <option>Panti</option>
+          </select>
+          <div class="flex gap-2">
+            <button class="flex-1 bg-primary hover:bg-primary-light text-white px-4 py-2.5 rounded-lg text-sm font-medium transition">Tapis</button>
+            <button class="text-gray-500 hover:text-primary px-3 py-2.5 text-sm transition">Set Semula</button>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3 mt-3">
+          <div class="flex items-center gap-2">
+            <label class="text-xs text-gray-500 whitespace-nowrap">Dari:</label>
+            <input type="date" class="flex-1 border border-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
+          </div>
+          <div class="flex items-center gap-2">
+            <label class="text-xs text-gray-500 whitespace-nowrap">Hingga:</label>
+            <input type="date" class="flex-1 border border-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Bulk Action Bar -->
+      <div x-show="selected.length > 0" x-transition class="bg-amber-50 border border-amber-200 rounded-xl px-5 py-3 mb-4 flex items-center gap-4" style="display:none">
+        <span class="text-sm text-amber-800 font-medium" x-text="selected.length + ' item dipilih'"></span>
+        <div class="flex gap-2 ml-auto">
+          <button class="flex items-center gap-1.5 bg-green-600 hover:bg-green-700 text-white px-4 py-1.5 rounded-lg text-sm font-medium transition">
+            <i data-lucide="check" class="w-3.5 h-3.5"></i>Luluskan Semua
+          </button>
+          <button class="flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white px-4 py-1.5 rounded-lg text-sm font-medium transition">
+            <i data-lucide="x" class="w-3.5 h-3.5"></i>Tolak Semua
+          </button>
+          <button class="flex items-center gap-1.5 border border-border text-text hover:bg-white px-4 py-1.5 rounded-lg text-sm font-medium transition">
+            <i data-lucide="download" class="w-3.5 h-3.5"></i>Eksport
+          </button>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="bg-white rounded-xl border border-border shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-surface border-b border-border">
+                <th class="px-4 py-3.5 w-10">
+                  <input type="checkbox" @change="toggleAll()" :checked="allSelected" class="accent-primary w-4 h-4" />
+                </th>
+                <th class="text-left px-4 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wide">
+                  <button class="flex items-center gap-1 hover:text-text transition">No. Rujukan<i data-lucide="chevrons-up-down" class="w-3.5 h-3.5"></i></button>
+                </th>
+                <th class="text-left px-4 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wide">Nama Pemohon</th>
+                <th class="text-left px-4 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wide">No. IC</th>
+                <th class="text-left px-4 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wide">HSK</th>
+                <th class="text-left px-4 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wide">
+                  <button class="flex items-center gap-1 hover:text-text transition">Tarikh Mohon<i data-lucide="chevrons-up-down" class="w-3.5 h-3.5"></i></button>
+                </th>
+                <th class="text-left px-4 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wide">Tarikh Lawatan</th>
+                <th class="text-center px-4 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wide">Bil.</th>
+                <th class="text-right px-4 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wide">RM</th>
+                <th class="text-left px-4 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wide">Status</th>
+                <th class="text-center px-4 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wide">Tindakan</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              <!-- Row macro: id, ref, nama, ic, hsk, mohon, lawatan, bil, rm, status -->
+              <tr class="hover:bg-surface/50 transition"><td class="px-4 py-3"><input type="checkbox" @change="toggle(1)" :checked="selected.includes(1)" class="accent-primary w-4 h-4" /></td><td class="px-4 py-3 font-mono text-xs text-primary font-semibold">HSK-2024-00847</td><td class="px-4 py-3 font-medium text-text">Ahmad Firdaus bin Hamzah</td><td class="px-4 py-3 text-gray-500 font-mono text-xs">850412-01-5231</td><td class="px-4 py-3 text-gray-600">Gunung Ledang</td><td class="px-4 py-3 text-gray-500">10 Dis 2024</td><td class="px-4 py-3 text-gray-500">15–17 Dis 2024</td><td class="px-4 py-3 text-center text-gray-600">5</td><td class="px-4 py-3 text-right font-medium text-text">75.00</td><td class="px-4 py-3"><span class="bg-green-100 text-green-700 text-xs font-semibold px-2.5 py-1 rounded-full">Diluluskan</span></td><td class="px-4 py-3"><div class="flex items-center justify-center gap-1"><a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-3.5 h-3.5"></i></a><button class="p-1.5 text-green-600 hover:bg-green-50 rounded transition"><i data-lucide="check" class="w-3.5 h-3.5"></i></button><button class="p-1.5 text-red-500 hover:bg-red-50 rounded transition"><i data-lucide="x" class="w-3.5 h-3.5"></i></button></div></td></tr>
+              <tr class="bg-gray-50 hover:bg-surface/50 transition"><td class="px-4 py-3"><input type="checkbox" @change="toggle(2)" :checked="selected.includes(2)" class="accent-primary w-4 h-4" /></td><td class="px-4 py-3 font-mono text-xs text-primary font-semibold">HSK-2024-00846</td><td class="px-4 py-3 font-medium text-text">Nurul Ain Binti Razali</td><td class="px-4 py-3 text-gray-500 font-mono text-xs">900623-14-6782</td><td class="px-4 py-3 text-gray-600">Endau-Rompin</td><td class="px-4 py-3 text-gray-500">10 Dis 2024</td><td class="px-4 py-3 text-gray-500">20–22 Dis 2024</td><td class="px-4 py-3 text-center text-gray-600">3</td><td class="px-4 py-3 text-right font-medium text-text">45.00</td><td class="px-4 py-3"><span class="bg-yellow-100 text-yellow-700 text-xs font-semibold px-2.5 py-1 rounded-full">Dalam Semakan</span></td><td class="px-4 py-3"><div class="flex items-center justify-center gap-1"><a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-3.5 h-3.5"></i></a><button class="p-1.5 text-green-600 hover:bg-green-50 rounded transition"><i data-lucide="check" class="w-3.5 h-3.5"></i></button><button class="p-1.5 text-red-500 hover:bg-red-50 rounded transition"><i data-lucide="x" class="w-3.5 h-3.5"></i></button></div></td></tr>
+              <tr class="hover:bg-surface/50 transition"><td class="px-4 py-3"><input type="checkbox" @change="toggle(3)" :checked="selected.includes(3)" class="accent-primary w-4 h-4" /></td><td class="px-4 py-3 font-mono text-xs text-primary font-semibold">HSK-2024-00845</td><td class="px-4 py-3 font-medium text-text">Mohd Hafiz bin Ismail</td><td class="px-4 py-3 text-gray-500 font-mono text-xs">880315-07-4521</td><td class="px-4 py-3 text-gray-600">Gunung Pulai</td><td class="px-4 py-3 text-gray-500">09 Dis 2024</td><td class="px-4 py-3 text-gray-500">18–19 Dis 2024</td><td class="px-4 py-3 text-center text-gray-600">8</td><td class="px-4 py-3 text-right font-medium text-text">80.00</td><td class="px-4 py-3"><span class="bg-blue-100 text-blue-700 text-xs font-semibold px-2.5 py-1 rounded-full">Baru</span></td><td class="px-4 py-3"><div class="flex items-center justify-center gap-1"><a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-3.5 h-3.5"></i></a><button class="p-1.5 text-green-600 hover:bg-green-50 rounded transition"><i data-lucide="check" class="w-3.5 h-3.5"></i></button><button class="p-1.5 text-red-500 hover:bg-red-50 rounded transition"><i data-lucide="x" class="w-3.5 h-3.5"></i></button></div></td></tr>
+              <tr class="bg-gray-50 hover:bg-surface/50 transition"><td class="px-4 py-3"><input type="checkbox" @change="toggle(4)" :checked="selected.includes(4)" class="accent-primary w-4 h-4" /></td><td class="px-4 py-3 font-mono text-xs text-primary font-semibold">HSK-2024-00844</td><td class="px-4 py-3 font-medium text-text">Siti Rahayu Binti Omar</td><td class="px-4 py-3 text-gray-500 font-mono text-xs">920801-05-3341</td><td class="px-4 py-3 text-gray-600">Panti</td><td class="px-4 py-3 text-gray-500">09 Dis 2024</td><td class="px-4 py-3 text-gray-500">14–15 Dis 2024</td><td class="px-4 py-3 text-center text-gray-600">2</td><td class="px-4 py-3 text-right font-medium text-text">20.00</td><td class="px-4 py-3"><span class="bg-teal-100 text-teal-700 text-xs font-semibold px-2.5 py-1 rounded-full">Dibayar</span></td><td class="px-4 py-3"><div class="flex items-center justify-center gap-1"><a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-3.5 h-3.5"></i></a><button class="p-1.5 text-green-600 hover:bg-green-50 rounded transition"><i data-lucide="check" class="w-3.5 h-3.5"></i></button><button class="p-1.5 text-red-500 hover:bg-red-50 rounded transition"><i data-lucide="x" class="w-3.5 h-3.5"></i></button></div></td></tr>
+              <tr class="hover:bg-surface/50 transition"><td class="px-4 py-3"><input type="checkbox" @change="toggle(5)" :checked="selected.includes(5)" class="accent-primary w-4 h-4" /></td><td class="px-4 py-3 font-mono text-xs text-primary font-semibold">HSK-2024-00843</td><td class="px-4 py-3 font-medium text-text">Faizal bin Yusof</td><td class="px-4 py-3 text-gray-500 font-mono text-xs">870509-11-2234</td><td class="px-4 py-3 text-gray-600">Gunung Arong</td><td class="px-4 py-3 text-gray-500">08 Dis 2024</td><td class="px-4 py-3 text-gray-500">20–23 Dis 2024</td><td class="px-4 py-3 text-center text-gray-600">6</td><td class="px-4 py-3 text-right font-medium text-text">90.00</td><td class="px-4 py-3"><span class="bg-green-100 text-green-700 text-xs font-semibold px-2.5 py-1 rounded-full">Diluluskan</span></td><td class="px-4 py-3"><div class="flex items-center justify-center gap-1"><a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-3.5 h-3.5"></i></a><button class="p-1.5 text-green-600 hover:bg-green-50 rounded transition"><i data-lucide="check" class="w-3.5 h-3.5"></i></button><button class="p-1.5 text-red-500 hover:bg-red-50 rounded transition"><i data-lucide="x" class="w-3.5 h-3.5"></i></button></div></td></tr>
+              <tr class="bg-gray-50 hover:bg-surface/50 transition"><td class="px-4 py-3"><input type="checkbox" @change="toggle(6)" :checked="selected.includes(6)" class="accent-primary w-4 h-4" /></td><td class="px-4 py-3 font-mono text-xs text-primary font-semibold">HSK-2024-00842</td><td class="px-4 py-3 font-medium text-text">Azman bin Rashid</td><td class="px-4 py-3 text-gray-500 font-mono text-xs">830712-01-4412</td><td class="px-4 py-3 text-gray-600">Gunung Belumut</td><td class="px-4 py-3 text-gray-500">08 Dis 2024</td><td class="px-4 py-3 text-gray-500">16–17 Dis 2024</td><td class="px-4 py-3 text-center text-gray-600">4</td><td class="px-4 py-3 text-right font-medium text-text">40.00</td><td class="px-4 py-3"><span class="bg-red-100 text-red-700 text-xs font-semibold px-2.5 py-1 rounded-full">Ditolak</span></td><td class="px-4 py-3"><div class="flex items-center justify-center gap-1"><a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-3.5 h-3.5"></i></a><button class="p-1.5 text-green-600 hover:bg-green-50 rounded transition"><i data-lucide="check" class="w-3.5 h-3.5"></i></button><button class="p-1.5 text-red-500 hover:bg-red-50 rounded transition"><i data-lucide="x" class="w-3.5 h-3.5"></i></button></div></td></tr>
+              <tr class="hover:bg-surface/50 transition"><td class="px-4 py-3"><input type="checkbox" @change="toggle(7)" :checked="selected.includes(7)" class="accent-primary w-4 h-4" /></td><td class="px-4 py-3 font-mono text-xs text-primary font-semibold">HSK-2024-00841</td><td class="px-4 py-3 font-medium text-text">Rozita binti Hassan</td><td class="px-4 py-3 text-gray-500 font-mono text-xs">860224-14-6690</td><td class="px-4 py-3 text-gray-600">Gunung Ledang</td><td class="px-4 py-3 text-gray-500">07 Dis 2024</td><td class="px-4 py-3 text-gray-500">22–25 Dis 2024</td><td class="px-4 py-3 text-center text-gray-600">10</td><td class="px-4 py-3 text-right font-medium text-text">150.00</td><td class="px-4 py-3"><span class="bg-yellow-100 text-yellow-700 text-xs font-semibold px-2.5 py-1 rounded-full">Dalam Semakan</span></td><td class="px-4 py-3"><div class="flex items-center justify-center gap-1"><a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-3.5 h-3.5"></i></a><button class="p-1.5 text-green-600 hover:bg-green-50 rounded transition"><i data-lucide="check" class="w-3.5 h-3.5"></i></button><button class="p-1.5 text-red-500 hover:bg-red-50 rounded transition"><i data-lucide="x" class="w-3.5 h-3.5"></i></button></div></td></tr>
+              <tr class="bg-gray-50 hover:bg-surface/50 transition"><td class="px-4 py-3"><input type="checkbox" @change="toggle(8)" :checked="selected.includes(8)" class="accent-primary w-4 h-4" /></td><td class="px-4 py-3 font-mono text-xs text-primary font-semibold">HSK-2024-00840</td><td class="px-4 py-3 font-medium text-text">Khairul bin Anwar</td><td class="px-4 py-3 text-gray-500 font-mono text-xs">911103-07-3312</td><td class="px-4 py-3 text-gray-600">Endau-Rompin</td><td class="px-4 py-3 text-gray-500">07 Dis 2024</td><td class="px-4 py-3 text-gray-500">18–20 Dis 2024</td><td class="px-4 py-3 text-center text-gray-600">7</td><td class="px-4 py-3 text-right font-medium text-text">105.00</td><td class="px-4 py-3"><span class="bg-blue-100 text-blue-700 text-xs font-semibold px-2.5 py-1 rounded-full">Baru</span></td><td class="px-4 py-3"><div class="flex items-center justify-center gap-1"><a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-3.5 h-3.5"></i></a><button class="p-1.5 text-green-600 hover:bg-green-50 rounded transition"><i data-lucide="check" class="w-3.5 h-3.5"></i></button><button class="p-1.5 text-red-500 hover:bg-red-50 rounded transition"><i data-lucide="x" class="w-3.5 h-3.5"></i></button></div></td></tr>
+              <tr class="hover:bg-surface/50 transition"><td class="px-4 py-3"><input type="checkbox" @change="toggle(9)" :checked="selected.includes(9)" class="accent-primary w-4 h-4" /></td><td class="px-4 py-3 font-mono text-xs text-primary font-semibold">HSK-2024-00839</td><td class="px-4 py-3 font-medium text-text">Shahrul bin Kamaruddin</td><td class="px-4 py-3 text-gray-500 font-mono text-xs">840930-05-2201</td><td class="px-4 py-3 text-gray-600">Gunung Pulai</td><td class="px-4 py-3 text-gray-500">07 Dis 2024</td><td class="px-4 py-3 text-gray-500">19–21 Dis 2024</td><td class="px-4 py-3 text-center text-gray-600">5</td><td class="px-4 py-3 text-right font-medium text-text">50.00</td><td class="px-4 py-3"><span class="bg-green-100 text-green-700 text-xs font-semibold px-2.5 py-1 rounded-full">Diluluskan</span></td><td class="px-4 py-3"><div class="flex items-center justify-center gap-1"><a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-3.5 h-3.5"></i></a><button class="p-1.5 text-green-600 hover:bg-green-50 rounded transition"><i data-lucide="check" class="w-3.5 h-3.5"></i></button><button class="p-1.5 text-red-500 hover:bg-red-50 rounded transition"><i data-lucide="x" class="w-3.5 h-3.5"></i></button></div></td></tr>
+              <tr class="bg-gray-50 hover:bg-surface/50 transition"><td class="px-4 py-3"><input type="checkbox" @change="toggle(10)" :checked="selected.includes(10)" class="accent-primary w-4 h-4" /></td><td class="px-4 py-3 font-mono text-xs text-primary font-semibold">HSK-2024-00838</td><td class="px-4 py-3 font-medium text-text">Zuraidah binti Mahmud</td><td class="px-4 py-3 text-gray-500 font-mono text-xs">950412-01-4455</td><td class="px-4 py-3 text-gray-600">Panti</td><td class="px-4 py-3 text-gray-500">06 Dis 2024</td><td class="px-4 py-3 text-gray-500">13–14 Dis 2024</td><td class="px-4 py-3 text-center text-gray-600">3</td><td class="px-4 py-3 text-right font-medium text-text">30.00</td><td class="px-4 py-3"><span class="bg-teal-100 text-teal-700 text-xs font-semibold px-2.5 py-1 rounded-full">Dibayar</span></td><td class="px-4 py-3"><div class="flex items-center justify-center gap-1"><a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-3.5 h-3.5"></i></a><button class="p-1.5 text-green-600 hover:bg-green-50 rounded transition"><i data-lucide="check" class="w-3.5 h-3.5"></i></button><button class="p-1.5 text-red-500 hover:bg-red-50 rounded transition"><i data-lucide="x" class="w-3.5 h-3.5"></i></button></div></td></tr>
+              <tr class="hover:bg-surface/50 transition"><td class="px-4 py-3"><input type="checkbox" @change="toggle(11)" :checked="selected.includes(11)" class="accent-primary w-4 h-4" /></td><td class="px-4 py-3 font-mono text-xs text-primary font-semibold">HSK-2024-00837</td><td class="px-4 py-3 font-medium text-text">Hamdan bin Saad</td><td class="px-4 py-3 text-gray-500 font-mono text-xs">790618-14-1122</td><td class="px-4 py-3 text-gray-600">Gunung Ledang</td><td class="px-4 py-3 text-gray-500">06 Dis 2024</td><td class="px-4 py-3 text-gray-500">21–24 Dis 2024</td><td class="px-4 py-3 text-center text-gray-600">9</td><td class="px-4 py-3 text-right font-medium text-text">135.00</td><td class="px-4 py-3"><span class="bg-blue-100 text-blue-700 text-xs font-semibold px-2.5 py-1 rounded-full">Baru</span></td><td class="px-4 py-3"><div class="flex items-center justify-center gap-1"><a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-3.5 h-3.5"></i></a><button class="p-1.5 text-green-600 hover:bg-green-50 rounded transition"><i data-lucide="check" class="w-3.5 h-3.5"></i></button><button class="p-1.5 text-red-500 hover:bg-red-50 rounded transition"><i data-lucide="x" class="w-3.5 h-3.5"></i></button></div></td></tr>
+              <tr class="bg-gray-50 hover:bg-surface/50 transition"><td class="px-4 py-3"><input type="checkbox" @change="toggle(12)" :checked="selected.includes(12)" class="accent-primary w-4 h-4" /></td><td class="px-4 py-3 font-mono text-xs text-primary font-semibold">HSK-2024-00836</td><td class="px-4 py-3 font-medium text-text">Norlizan binti Ibrahim</td><td class="px-4 py-3 text-gray-500 font-mono text-xs">881205-07-9988</td><td class="px-4 py-3 text-gray-600">Endau-Rompin</td><td class="px-4 py-3 text-gray-500">05 Dis 2024</td><td class="px-4 py-3 text-gray-500">17–18 Dis 2024</td><td class="px-4 py-3 text-center text-gray-600">4</td><td class="px-4 py-3 text-right font-medium text-text">40.00</td><td class="px-4 py-3"><span class="bg-yellow-100 text-yellow-700 text-xs font-semibold px-2.5 py-1 rounded-full">Dalam Semakan</span></td><td class="px-4 py-3"><div class="flex items-center justify-center gap-1"><a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-3.5 h-3.5"></i></a><button class="p-1.5 text-green-600 hover:bg-green-50 rounded transition"><i data-lucide="check" class="w-3.5 h-3.5"></i></button><button class="p-1.5 text-red-500 hover:bg-red-50 rounded transition"><i data-lucide="x" class="w-3.5 h-3.5"></i></button></div></td></tr>
+              <tr class="hover:bg-surface/50 transition"><td class="px-4 py-3"><input type="checkbox" @change="toggle(13)" :checked="selected.includes(13)" class="accent-primary w-4 h-4" /></td><td class="px-4 py-3 font-mono text-xs text-primary font-semibold">HSK-2024-00835</td><td class="px-4 py-3 font-medium text-text">Rizal bin Othman</td><td class="px-4 py-3 text-gray-500 font-mono text-xs">930327-01-7743</td><td class="px-4 py-3 text-gray-600">Gunung Arong</td><td class="px-4 py-3 text-gray-500">05 Dis 2024</td><td class="px-4 py-3 text-gray-500">12–13 Dis 2024</td><td class="px-4 py-3 text-center text-gray-600">2</td><td class="px-4 py-3 text-right font-medium text-text">20.00</td><td class="px-4 py-3"><span class="bg-red-100 text-red-700 text-xs font-semibold px-2.5 py-1 rounded-full">Ditolak</span></td><td class="px-4 py-3"><div class="flex items-center justify-center gap-1"><a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-3.5 h-3.5"></i></a><button class="p-1.5 text-green-600 hover:bg-green-50 rounded transition"><i data-lucide="check" class="w-3.5 h-3.5"></i></button><button class="p-1.5 text-red-500 hover:bg-red-50 rounded transition"><i data-lucide="x" class="w-3.5 h-3.5"></i></button></div></td></tr>
+              <tr class="bg-gray-50 hover:bg-surface/50 transition"><td class="px-4 py-3"><input type="checkbox" @change="toggle(14)" :checked="selected.includes(14)" class="accent-primary w-4 h-4" /></td><td class="px-4 py-3 font-mono text-xs text-primary font-semibold">HSK-2024-00834</td><td class="px-4 py-3 font-medium text-text">Faridah binti Kadir</td><td class="px-4 py-3 text-gray-500 font-mono text-xs">820915-05-5566</td><td class="px-4 py-3 text-gray-600">Gunung Belumut</td><td class="px-4 py-3 text-gray-500">04 Dis 2024</td><td class="px-4 py-3 text-gray-500">15–17 Dis 2024</td><td class="px-4 py-3 text-center text-gray-600">6</td><td class="px-4 py-3 text-right font-medium text-text">60.00</td><td class="px-4 py-3"><span class="bg-green-100 text-green-700 text-xs font-semibold px-2.5 py-1 rounded-full">Diluluskan</span></td><td class="px-4 py-3"><div class="flex items-center justify-center gap-1"><a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-3.5 h-3.5"></i></a><button class="p-1.5 text-green-600 hover:bg-green-50 rounded transition"><i data-lucide="check" class="w-3.5 h-3.5"></i></button><button class="p-1.5 text-red-500 hover:bg-red-50 rounded transition"><i data-lucide="x" class="w-3.5 h-3.5"></i></button></div></td></tr>
+              <tr class="hover:bg-surface/50 transition"><td class="px-4 py-3"><input type="checkbox" @change="toggle(15)" :checked="selected.includes(15)" class="accent-primary w-4 h-4" /></td><td class="px-4 py-3 font-mono text-xs text-primary font-semibold">HSK-2024-00833</td><td class="px-4 py-3 font-medium text-text">Iskandar bin Zulkarnain</td><td class="px-4 py-3 text-gray-500 font-mono text-xs">960408-14-3321</td><td class="px-4 py-3 text-gray-600">Gunung Pulai</td><td class="px-4 py-3 text-gray-500">04 Dis 2024</td><td class="px-4 py-3 text-gray-500">20–23 Dis 2024</td><td class="px-4 py-3 text-center text-gray-600">8</td><td class="px-4 py-3 text-right font-medium text-text">120.00</td><td class="px-4 py-3"><span class="bg-blue-100 text-blue-700 text-xs font-semibold px-2.5 py-1 rounded-full">Baru</span></td><td class="px-4 py-3"><div class="flex items-center justify-center gap-1"><a href="application-detail.html" class="p-1.5 text-primary hover:bg-primary/10 rounded transition"><i data-lucide="eye" class="w-3.5 h-3.5"></i></a><button class="p-1.5 text-green-600 hover:bg-green-50 rounded transition"><i data-lucide="check" class="w-3.5 h-3.5"></i></button><button class="p-1.5 text-red-500 hover:bg-red-50 rounded transition"><i data-lucide="x" class="w-3.5 h-3.5"></i></button></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="px-6 py-4 border-t border-border flex items-center justify-between">
+          <p class="text-sm text-gray-500">Menunjukkan <span class="font-medium text-text">1–15</span> daripada <span class="font-medium text-text">187</span> rekod</p>
+          <div class="flex items-center gap-1">
+            <button class="px-3 py-1.5 text-sm border border-border rounded-lg text-gray-400 cursor-not-allowed">← Sebelumnya</button>
+            <button class="px-3 py-1.5 text-sm border border-primary rounded-lg bg-primary text-white font-semibold">1</button>
+            <button class="px-3 py-1.5 text-sm border border-border rounded-lg text-gray-600 hover:bg-surface transition">2</button>
+            <button class="px-3 py-1.5 text-sm border border-border rounded-lg text-gray-600 hover:bg-surface transition">3</button>
+            <span class="px-2 text-gray-400">...</span>
+            <button class="px-3 py-1.5 text-sm border border-border rounded-lg text-gray-600 hover:bg-surface transition">13</button>
+            <button class="px-3 py-1.5 text-sm border border-border rounded-lg text-gray-600 hover:bg-surface transition">Seterusnya →</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
