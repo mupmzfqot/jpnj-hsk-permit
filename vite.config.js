@@ -2,7 +2,7 @@ import { resolve } from 'path'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: '/hsk-johor-permit/',
+  base: '/jpnj-hsk-permit/',
   build: {
     rollupOptions: {
       input: {
