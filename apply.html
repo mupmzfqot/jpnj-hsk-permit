@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Borang Permohonan Permit HSK — JPNJ</title>
+  <script type="module" crossorigin src="/hsk-johor-permit/assets/main-EgACJ2bD.js"></script>
+  <link rel="stylesheet" crossorigin href="/hsk-johor-permit/assets/main-Bhd_LqCS.css">
+</head>
+<body>
+
+  <!-- Utility Bar -->
+  <div class="bg-primary-dark text-white text-xs py-1.5">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+      <span class="flex items-center gap-1.5">
+        <i data-lucide="tree-pine" class="w-3.5 h-3.5 text-accent"></i>
+        Portal Rasmi JPNJ | Johor
+      </span>
+      <div class="hidden sm:flex items-center gap-4 text-white/70">
+        <a href="#" class="hover:text-white transition">Hubungi Kami</a>
+        <span class="text-white/30">|</span>
+        <a href="#" class="hover:text-white transition">Soalan Lazim</a>
+        <span class="text-white/30">|</span>
+        <a href="#" class="hover:text-white transition font-semibold text-white">BM</a>
+        <span class="text-white/30">/</span>
+        <a href="#" class="hover:text-white transition">EN</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="bg-primary sticky top-0 z-50 shadow-lg" x-data="{ open: false }">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center">
+          <img src="/hsk-johor-permit/assets/logo-Clln_BRm.svg" alt="Jabatan Perhutanan Negeri Johor" class="h-10 w-auto">
+        </a>
+        <div class="hidden md:flex items-center gap-0.5">
+          <a href="index.html" class="text-white/85 hover:text-white hover:bg-white/10 px-3 py-2 rounded text-sm transition">Utama</a>
+          <a href="apply.html" class="text-white bg-white/15 px-3 py-2 rounded text-sm font-medium">Permohonan</a>
+          <a href="status.html" class="text-white/85 hover:text-white hover:bg-white/10 px-3 py-2 rounded text-sm transition">Semak Status</a>
+          <a href="payment.html" class="text-white/85 hover:text-white hover:bg-white/10 px-3 py-2 rounded text-sm transition">Bayaran</a>
+          <a href="#" class="text-white/85 hover:text-white hover:bg-white/10 px-3 py-2 rounded text-sm transition">Panduan</a>
+        </div>
+        <div class="hidden md:flex items-center gap-2">
+          <a href="admin/login.html" class="border border-white/40 text-white hover:bg-white/10 px-4 py-1.5 rounded text-sm transition">Log Masuk</a>
+          <a href="apply.html" class="bg-accent hover:bg-yellow-600 text-white px-4 py-1.5 rounded text-sm font-semibold transition">Daftar</a>
+        </div>
+        <button @click="open = !open" class="md:hidden text-white p-2 rounded hover:bg-white/10 transition">
+          <i data-lucide="menu" x-show="!open" class="w-5 h-5"></i>
+          <i data-lucide="x" x-show="open" class="w-5 h-5" style="display:none"></i>
+        </button>
+      </div>
+    </div>
+    <div x-show="open" x-transition class="md:hidden bg-primary-dark border-t border-white/10 px-4 py-3 space-y-1" style="display:none">
+      <a href="index.html" class="block text-white/85 hover:text-white hover:bg-white/10 px-3 py-2 rounded text-sm transition">Utama</a>
+      <a href="apply.html" class="block text-white bg-white/10 px-3 py-2 rounded text-sm">Permohonan</a>
+      <a href="status.html" class="block text-white/85 hover:text-white hover:bg-white/10 px-3 py-2 rounded text-sm transition">Semak Status</a>
+      <a href="payment.html" class="block text-white/85 hover:text-white hover:bg-white/10 px-3 py-2 rounded text-sm transition">Bayaran</a>
+      <a href="#" class="block text-white/85 hover:text-white hover:bg-white/10 px-3 py-2 rounded text-sm transition">Panduan</a>
+      <div class="pt-2 pb-1 flex gap-2">
+        <a href="admin/login.html" class="flex-1 text-center border border-white/40 text-white px-3 py-2 rounded text-sm transition">Log Masuk</a>
+        <a href="apply.html" class="flex-1 text-center bg-accent text-white px-3 py-2 rounded text-sm font-semibold transition">Daftar</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="bg-white border-b border-border">
+    <div class="max-w-3xl mx-auto px-4 py-8 text-center">
+      <h1 class="text-2xl font-bold text-text font-heading">Borang Permohonan Permit HSK</h1>
+      <p class="text-gray-500 mt-2 text-sm">Lengkapkan semua maklumat yang diperlukan untuk memohon permit memasuki Hutan Simpanan Kekal</p>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <main class="py-10 bg-surface min-h-screen"
+    x-data="{
+      step: 1,
+      submitted: false,
+      loading: false,
+      form: {
+        nama: '',
+        ic: '',
+        telefon: '',
+        emel: '',
+        warganegara: 'malaysia',
+        alamat: '',
+        hsk: '',
+        tarikhMasuk: '',
+        tarikhKeluar: '',
+        tujuan: 'rekreasi',
+        laluan: '',
+        syarat1: false,
+        syarat2: false
+      },
+      members: [{ nama: '', ic: '', umur: '', warganegara: 'Malaysia' }],
+      get days() {
+        if (!this.form.tarikhMasuk || !this.form.tarikhKeluar) return 0;
+        const d1 = new Date(this.form.tarikhMasuk);
+        const d2 = new Date(this.form.tarikhKeluar);
+        return Math.max(0, Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24)));
+      },
+      get rate() { return this.form.warganegara === 'malaysia' ? 5 : 20; },
+      get fee() { return this.members.length * this.days * this.rate; },
+      addMember() { this.members.push({ nama: '', ic: '', umur: '', warganegara: 'Malaysia' }); },
+      removeMember(i) { if (this.members.length > 1) this.members.splice(i, 1); },
+      next() { if (this.step < 5) this.step++; window.scrollTo(0,0); },
+      prev() { if (this.step > 1) this.step--; window.scrollTo(0,0); },
+      submit() {
+        this.loading = true;
+        setTimeout(() => { this.loading = false; this.submitted = true; window.scrollTo(0,0); }, 1800);
+      }
+    }">
+    <div class="max-w-3xl mx-auto px-4">
+
+      <!-- Success State -->
+      <div x-show="submitted" x-transition class="bg-white rounded-xl border border-border shadow-sm p-10 text-center" style="display:none">
+        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
+          <i data-lucide="check-circle" class="w-10 h-10 text-green-600"></i>
+        </div>
+        <h2 class="text-2xl font-bold text-text font-heading mb-2">Permohonan Berjaya Dihantar!</h2>
+        <p class="text-gray-500 mb-6">Terima kasih. Permohonan anda sedang dalam semakan pegawai JPNJ.</p>
+        <div class="bg-surface rounded-lg p-5 inline-block mb-6">
+          <p class="text-xs text-gray-500 mb-1">No. Rujukan Permohonan</p>
+          <p class="text-2xl font-bold text-primary font-heading tracking-wide">HSK-2024-00847</p>
+        </div>
+        <div class="text-sm text-gray-500 space-y-1 mb-8">
+          <p>Notifikasi akan dihantar ke emel anda setelah permohonan diproses.</p>
+          <p>Bayaran perlu diselesaikan dalam <strong class="text-text">24 jam</strong> selepas kelulusan.</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="status.html" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-light text-white px-6 py-2.5 rounded-lg text-sm font-medium transition">
+            <i data-lucide="search" class="w-4 h-4"></i>
+            Semak Status Permohonan
+          </a>
+          <a href="index.html" class="inline-flex items-center justify-center gap-2 border border-border text-text hover:bg-surface px-6 py-2.5 rounded-lg text-sm font-medium transition">
+            Kembali ke Laman Utama
+          </a>
+        </div>
+      </div>
+
+      <!-- Form Card -->
+      <div x-show="!submitted">
+
+        <!-- Step Progress Indicator -->
+        <div class="bg-white rounded-xl border border-border shadow-sm p-6 mb-6">
+          <div class="flex items-center justify-between relative">
+            <!-- Connector line -->
+            <div class="absolute top-5 left-10 right-10 h-0.5 bg-border z-0"></div>
+            <template x-for="s in [
+              { n:1, label:'Maklumat Pemohon' },
+              { n:2, label:'HSK & Tarikh' },
+              { n:3, label:'Ahli Kumpulan' },
+              { n:4, label:'Dokumen' },
+              { n:5, label:'Semak & Hantar' }
+            ]">
+              <div class="flex flex-col items-center relative z-10">
+                <div :class="{
+                  'bg-primary text-white border-primary': step === s.n,
+                  'bg-accent text-white border-accent': step > s.n,
+                  'bg-white text-gray-400 border-border': step < s.n
+                }" class="w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-bold transition-all">
+                  <template x-if="step > s.n">
+                    <i data-lucide="check" class="w-4 h-4"></i>
+                  </template>
+                  <template x-if="step <= s.n">
+                    <span x-text="s.n"></span>
+                  </template>
+                </div>
+                <span class="text-xs mt-2 text-center hidden sm:block" :class="step === s.n ? 'text-primary font-semibold' : 'text-gray-400'" x-text="s.label"></span>
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <!-- Step 1: Maklumat Pemohon -->
+        <div x-show="step === 1" x-transition class="bg-white rounded-xl border border-border shadow-sm p-6 md:p-8">
+          <h2 class="text-lg font-bold text-text font-heading mb-6 pb-3 border-b border-border flex items-center gap-2">
+            <i data-lucide="user" class="w-5 h-5 text-primary"></i>
+            Maklumat Pemohon
+          </h2>
+          <div class="space-y-5">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm font-medium text-text mb-1.5">Nama Penuh <span class="text-red-500">*</span></label>
+                <input type="text" x-model="form.nama" placeholder="Contoh: Ahmad Firdaus bin Hamzah" class="block w-full rounded-lg border border-border px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-text mb-1.5">No. Kad Pengenalan <span class="text-red-500">*</span></label>
+                <input type="text" x-model="form.ic" placeholder="000000-00-0000" class="block w-full rounded-lg border border-border px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition" />
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm font-medium text-text mb-1.5">No. Telefon <span class="text-red-500">*</span></label>
+                <input type="text" x-model="form.telefon" placeholder="01X-XXXXXXX" class="block w-full rounded-lg border border-border px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-text mb-1.5">Alamat Emel <span class="text-red-500">*</span></label>
+                <input type="email" x-model="form.emel" placeholder="contoh@emel.com" class="block w-full rounded-lg border border-border px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-text mb-2">Warganegara <span class="text-red-500">*</span></label>
+              <div class="flex gap-4">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" x-model="form.warganegara" value="malaysia" class="accent-primary w-4 h-4" />
+                  <span class="text-sm text-text">Warganegara Malaysia</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" x-model="form.warganegara" value="asing" class="accent-primary w-4 h-4" />
+                  <span class="text-sm text-text">Bukan Warganegara</span>
+                </label>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-text mb-1.5">Alamat Tetap <span class="text-red-500">*</span></label>
+              <textarea x-model="form.alamat" rows="3" placeholder="No. rumah, jalan, taman, poskod, negeri..." class="block w-full rounded-lg border border-border px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition resize-none"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: HSK & Tarikh -->
+        <div x-show="step === 2" x-transition class="bg-white rounded-xl border border-border shadow-sm p-6 md:p-8" style="display:none">
+          <h2 class="text-lg font-bold text-text font-heading mb-6 pb-3 border-b border-border flex items-center gap-2">
+            <i data-lucide="map-pin" class="w-5 h-5 text-primary"></i>
+            Pilih HSK &amp; Tarikh Lawatan
+          </h2>
+          <div class="space-y-5">
+            <div>
+              <label class="block text-sm font-medium text-text mb-1.5">Hutan Simpanan Kekal <span class="text-red-500">*</span></label>
+              <select x-model="form.hsk" class="block w-full rounded-lg border border-border px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition bg-white">
+                <option value="">-- Pilih HSK --</option>
+                <option>HSK Gunung Ledang (Segahar)</option>
+                <option>HSK Endau-Rompin (Mersing)</option>
+                <option>HSK Gunung Pulai (Kulai)</option>
+                <option>HSK Gunung Arong (Mersing)</option>
+                <option>HSK Gunung Belumut (Kluang)</option>
+                <option>HSK Panti (Kota Tinggi)</option>
+              </select>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm font-medium text-text mb-1.5">Tarikh Masuk <span class="text-red-500">*</span></label>
+                <input type="date" x-model="form.tarikhMasuk" class="block w-full rounded-lg border border-border px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-text mb-1.5">Tarikh Keluar <span class="text-red-500">*</span></label>
+                <input type="date" x-model="form.tarikhKeluar" class="block w-full rounded-lg border border-border px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition" />
+              </div>
+            </div>
+            <div x-show="days > 0" class="bg-surface border border-border rounded-lg px-4 py-3 text-sm text-primary font-medium flex items-center gap-2">
+              <i data-lucide="calendar-days" class="w-4 h-4"></i>
+              Tempoh lawatan: <span x-text="days"></span> hari
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-text mb-2">Tujuan Lawatan <span class="text-red-500">*</span></label>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <template x-for="t in ['rekreasi','penyelidikan','pendidikan','fotografi','pendakian']">
+                  <label class="relative cursor-pointer">
+                    <input type="radio" x-model="form.tujuan" :value="t" class="sr-only peer" />
+                    <div class="border border-border rounded-lg px-4 py-2.5 text-sm text-center capitalize peer-checked:border-primary peer-checked:bg-surface peer-checked:text-primary peer-checked:font-semibold transition" x-text="t.charAt(0).toUpperCase() + t.slice(1)"></div>
+                  </label>
+                </template>
+              </div>
+            </div>
+            <div x-show="form.tujuan === 'pendakian'" x-transition>
+              <label class="block text-sm font-medium text-text mb-1.5">Laluan Dipilih</label>
+              <input type="text" x-model="form.laluan" placeholder="Contoh: Laluan Puteri, Laluan Tengah..." class="block w-full rounded-lg border border-border px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Ahli Kumpulan -->
+        <div x-show="step === 3" x-transition class="bg-white rounded-xl border border-border shadow-sm p-6 md:p-8" style="display:none">
+          <div class="flex items-center justify-between mb-6 pb-3 border-b border-border">
+            <h2 class="text-lg font-bold text-text font-heading flex items-center gap-2">
+              <i data-lucide="users" class="w-5 h-5 text-primary"></i>
+              Maklumat Ahli Kumpulan
+            </h2>
+            <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full" x-text="members.length + ' ahli'"></span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="bg-surface border-b border-border">
+                  <th class="text-left px-3 py-2.5 font-semibold text-gray-600 text-xs uppercase">#</th>
+                  <th class="text-left px-3 py-2.5 font-semibold text-gray-600 text-xs uppercase">Nama Penuh</th>
+                  <th class="text-left px-3 py-2.5 font-semibold text-gray-600 text-xs uppercase">No. Kad Pengenalan</th>
+                  <th class="text-left px-3 py-2.5 font-semibold text-gray-600 text-xs uppercase">Umur</th>
+                  <th class="text-left px-3 py-2.5 font-semibold text-gray-600 text-xs uppercase">Warganegara</th>
+                  <th class="px-3 py-2.5"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <template x-for="(m, i) in members" :key="i">
+                  <tr class="border-b border-border/50">
+                    <td class="px-3 py-2.5 text-gray-400 font-medium" x-text="i + 1"></td>
+                    <td class="px-3 py-2.5 min-w-[160px]">
+                      <input type="text" x-model="m.nama" placeholder="Nama penuh" class="w-full border border-border rounded px-2.5 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary transition" />
+                    </td>
+                    <td class="px-3 py-2.5 min-w-[140px]">
+                      <input type="text" x-model="m.ic" placeholder="000000-00-0000" class="w-full border border-border rounded px-2.5 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary transition" />
+                    </td>
+                    <td class="px-3 py-2.5 min-w-[80px]">
+                      <input type="number" x-model="m.umur" min="1" max="99" placeholder="—" class="w-full border border-border rounded px-2.5 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary transition" />
+                    </td>
+                    <td class="px-3 py-2.5 min-w-[130px]">
+                      <select x-model="m.warganegara" class="w-full border border-border rounded px-2.5 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary transition bg-white">
+                        <option>Malaysia</option>
+                        <option>Asing</option>
+                      </select>
+                    </td>
+                    <td class="px-3 py-2.5">
+                      <button @click="removeMember(i)" :disabled="members.length <= 1" class="text-red-400 hover:text-red-600 disabled:opacity-30 disabled:cursor-not-allowed transition">
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+          <button @click="addMember()" class="mt-4 flex items-center gap-2 text-primary hover:text-primary-light text-sm font-medium transition">
+            <i data-lucide="plus-circle" class="w-4 h-4"></i>
+            Tambah Ahli
+          </button>
+        </div>
+
+        <!-- Step 4: Dokumen -->
+        <div x-show="step === 4" x-transition class="bg-white rounded-xl border border-border shadow-sm p-6 md:p-8" style="display:none">
+          <h2 class="text-lg font-bold text-text font-heading mb-6 pb-3 border-b border-border flex items-center gap-2">
+            <i data-lucide="upload-cloud" class="w-5 h-5 text-primary"></i>
+            Dokumen Sokongan
+          </h2>
+          <div class="space-y-6">
+            <div>
+              <label class="block text-sm font-medium text-text mb-1.5">Salinan Kad Pengenalan (Pemohon Utama) <span class="text-red-500">*</span></label>
+              <div class="border-2 border-dashed border-border rounded-lg p-6 text-center hover:border-primary transition cursor-pointer">
+                <i data-lucide="upload-cloud" class="w-8 h-8 text-gray-400 mx-auto mb-2"></i>
+                <p class="text-sm text-gray-500">Seret &amp; lepas fail di sini atau <span class="text-primary font-medium">klik untuk muat naik</span></p>
+                <p class="text-xs text-gray-400 mt-1">PDF, JPG, PNG — Max 5MB</p>
+                <input type="file" accept=".pdf,.jpg,.png" class="hidden" />
+              </div>
+            </div>
+            <div x-show="form.tujuan === 'penyelidikan' || form.tujuan === 'pendidikan'" x-transition>
+              <label class="block text-sm font-medium text-text mb-1.5">Surat Kebenaran / Sokongan Institusi <span class="text-red-500">*</span></label>
+              <div class="border-2 border-dashed border-border rounded-lg p-6 text-center hover:border-primary transition cursor-pointer">
+                <i data-lucide="file-text" class="w-8 h-8 text-gray-400 mx-auto mb-2"></i>
+                <p class="text-sm text-gray-500"><span class="text-primary font-medium">Klik untuk muat naik</span> surat kebenaran</p>
+                <p class="text-xs text-gray-400 mt-1">PDF sahaja — Max 5MB</p>
+                <input type="file" accept=".pdf" class="hidden" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-text mb-1.5">Senarai Ahli Kumpulan (Dokumen sokongan)</label>
+              <div class="border-2 border-dashed border-border rounded-lg p-6 text-center hover:border-primary transition cursor-pointer">
+                <i data-lucide="users" class="w-8 h-8 text-gray-400 mx-auto mb-2"></i>
+                <p class="text-sm text-gray-500"><span class="text-primary font-medium">Klik untuk muat naik</span> senarai ahli</p>
+                <p class="text-xs text-gray-400 mt-1">PDF, DOCX — Max 5MB</p>
+                <input type="file" accept=".pdf,.docx" class="hidden" />
+              </div>
+            </div>
+            <div class="space-y-3 pt-2">
+              <label class="flex items-start gap-3 cursor-pointer group">
+                <input type="checkbox" x-model="form.syarat1" class="accent-primary mt-0.5 w-4 h-4 flex-shrink-0" />
+                <span class="text-sm text-gray-600 group-hover:text-text transition">Saya mengesahkan bahawa semua maklumat yang diberikan adalah benar dan tepat.</span>
+              </label>
+              <label class="flex items-start gap-3 cursor-pointer group">
+                <input type="checkbox" x-model="form.syarat2" class="accent-primary mt-0.5 w-4 h-4 flex-shrink-0" />
+                <span class="text-sm text-gray-600 group-hover:text-text transition">Saya bersetuju dengan <a href="#" class="text-primary underline">Terma &amp; Syarat</a> penggunaan sistem permit HSK JPNJ.</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5: Semak & Hantar -->
+        <div x-show="step === 5" x-transition class="space-y-5" style="display:none">
+          <div class="bg-white rounded-xl border border-border shadow-sm p-6 md:p-8">
+            <h2 class="text-lg font-bold text-text font-heading mb-6 pb-3 border-b border-border flex items-center gap-2">
+              <i data-lucide="clipboard-check" class="w-5 h-5 text-primary"></i>
+              Semak Maklumat Permohonan
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm">
+              <div>
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">Maklumat Pemohon</p>
+                <div class="space-y-2">
+                  <div class="flex"><span class="text-gray-500 w-36 flex-shrink-0">Nama</span><span class="text-text font-medium" x-text="form.nama || '—'"></span></div>
+                  <div class="flex"><span class="text-gray-500 w-36 flex-shrink-0">No. K/P</span><span class="text-text font-medium" x-text="form.ic || '—'"></span></div>
+                  <div class="flex"><span class="text-gray-500 w-36 flex-shrink-0">Telefon</span><span class="text-text font-medium" x-text="form.telefon || '—'"></span></div>
+                  <div class="flex"><span class="text-gray-500 w-36 flex-shrink-0">Emel</span><span class="text-text font-medium" x-text="form.emel || '—'"></span></div>
+                  <div class="flex"><span class="text-gray-500 w-36 flex-shrink-0">Warganegara</span><span class="text-text font-medium" x-text="form.warganegara === 'malaysia' ? 'Warganegara Malaysia' : 'Bukan Warganegara'"></span></div>
+                </div>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">Maklumat Lawatan</p>
+                <div class="space-y-2">
+                  <div class="flex"><span class="text-gray-500 w-36 flex-shrink-0">HSK</span><span class="text-text font-medium" x-text="form.hsk || '—'"></span></div>
+                  <div class="flex"><span class="text-gray-500 w-36 flex-shrink-0">Tarikh Masuk</span><span class="text-text font-medium" x-text="form.tarikhMasuk || '—'"></span></div>
+                  <div class="flex"><span class="text-gray-500 w-36 flex-shrink-0">Tarikh Keluar</span><span class="text-text font-medium" x-text="form.tarikhKeluar || '—'"></span></div>
+                  <div class="flex"><span class="text-gray-500 w-36 flex-shrink-0">Tempoh</span><span class="text-text font-medium" x-text="days + ' hari'"></span></div>
+                  <div class="flex"><span class="text-gray-500 w-36 flex-shrink-0">Tujuan</span><span class="text-text font-medium capitalize" x-text="form.tujuan"></span></div>
+                  <div class="flex" x-show="form.laluan"><span class="text-gray-500 w-36 flex-shrink-0">Laluan</span><span class="text-text font-medium" x-text="form.laluan"></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 pt-5 border-t border-border">
+              <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">Ahli Kumpulan (<span x-text="members.length"></span> orang)</p>
+              <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                  <thead><tr class="bg-surface"><th class="text-left px-3 py-2 text-xs font-semibold text-gray-500">#</th><th class="text-left px-3 py-2 text-xs font-semibold text-gray-500">Nama</th><th class="text-left px-3 py-2 text-xs font-semibold text-gray-500">No. K/P</th><th class="text-left px-3 py-2 text-xs font-semibold text-gray-500">Umur</th><th class="text-left px-3 py-2 text-xs font-semibold text-gray-500">Warganegara</th></tr></thead>
+                  <tbody>
+                    <template x-for="(m,i) in members" :key="i">
+                      <tr class="border-t border-border/50">
+                        <td class="px-3 py-2 text-gray-400" x-text="i+1"></td>
+                        <td class="px-3 py-2 text-text" x-text="m.nama || '—'"></td>
+                        <td class="px-3 py-2 text-text" x-text="m.ic || '—'"></td>
+                        <td class="px-3 py-2 text-text" x-text="m.umur || '—'"></td>
+                        <td class="px-3 py-2 text-text" x-text="m.warganegara"></td>
+                      </tr>
+                    </template>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fee Calculation -->
+          <div class="bg-white rounded-xl border border-border shadow-sm p-6 md:p-8">
+            <h2 class="text-lg font-bold text-text font-heading mb-5 flex items-center gap-2">
+              <i data-lucide="receipt" class="w-5 h-5 text-primary"></i>
+              Pengiraan Bayaran
+            </h2>
+            <table class="w-full text-sm mb-4">
+              <thead><tr class="bg-surface border-b border-border"><th class="text-left px-4 py-2.5 font-semibold text-gray-600">Perkara</th><th class="text-right px-4 py-2.5 font-semibold text-gray-600">Jumlah</th></tr></thead>
+              <tbody>
+                <tr class="border-b border-border/50">
+                  <td class="px-4 py-3 text-gray-600">Kadar bayaran</td>
+                  <td class="px-4 py-3 text-right font-medium" x-text="'RM' + rate.toFixed(2) + '/orang/hari'"></td>
+                </tr>
+                <tr class="border-b border-border/50">
+                  <td class="px-4 py-3 text-gray-600">Bilangan ahli</td>
+                  <td class="px-4 py-3 text-right font-medium" x-text="members.length + ' orang'"></td>
+                </tr>
+                <tr class="border-b border-border/50">
+                  <td class="px-4 py-3 text-gray-600">Tempoh lawatan</td>
+                  <td class="px-4 py-3 text-right font-medium" x-text="days + ' hari'"></td>
+                </tr>
+                <tr class="bg-primary/5">
+                  <td class="px-4 py-3 font-bold text-text">Jumlah Bayaran</td>
+                  <td class="px-4 py-3 text-right font-bold text-primary text-lg" x-text="'RM' + fee.toFixed(2)"></td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="text-xs text-gray-500 flex items-center gap-1.5">
+              <i data-lucide="info" class="w-3.5 h-3.5"></i>
+              Bayaran perlu diselesaikan dalam 24 jam selepas permohonan diluluskan.
+            </p>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex items-center justify-between mt-6">
+          <button @click="prev()" x-show="step > 1" class="flex items-center gap-2 border border-border text-text hover:bg-white px-5 py-2.5 rounded-lg text-sm font-medium transition">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            Sebelumnya
+          </button>
+          <div x-show="step <= 1"></div>
+
+          <button @click="next()" x-show="step < 5" class="ml-auto flex items-center gap-2 bg-primary hover:bg-primary-light text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition">
+            Seterusnya
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+
+          <button @click="submit()" x-show="step === 5" :disabled="loading" class="ml-auto flex items-center gap-2 bg-primary hover:bg-primary-light disabled:opacity-60 text-white px-7 py-2.5 rounded-lg text-sm font-semibold transition" style="display:none">
+            <template x-if="loading">
+              <svg class="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg>
+            </template>
+            <template x-if="!loading">
+              <i data-lucide="send" class="w-4 h-4"></i>
+            </template>
+            <span x-text="loading ? 'Menghantar...' : 'Hantar Permohonan'"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-primary-dark text-white">
+    <div class="max-w-7xl mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <i data-lucide="tree-pine" class="w-5 h-5 text-accent"></i>
+            <span class="font-bold font-heading text-lg">JPNJ</span>
+          </div>
+          <p class="text-white/60 text-sm leading-relaxed">Jabatan Perhutanan Negeri Johor komited dalam pengurusan hutan yang mampan untuk generasi akan datang.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-accent mb-4 text-xs uppercase tracking-widest">Pautan Pantas</h4>
+          <ul class="space-y-2 text-sm text-white/65">
+            <li><a href="index.html" class="hover:text-white transition">Laman Utama</a></li>
+            <li><a href="apply.html" class="hover:text-white transition">Mohon Permit</a></li>
+            <li><a href="status.html" class="hover:text-white transition">Semak Status</a></li>
+            <li><a href="payment.html" class="hover:text-white transition">Bayaran Online</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-accent mb-4 text-xs uppercase tracking-widest">Hubungi Kami</h4>
+          <div class="space-y-1.5 text-sm text-white/65">
+            <p>Wisma Sumber Alam, Jalan Bukit Timbalan</p>
+            <p>80000 Johor Bahru, Johor</p>
+            <p class="mt-3 flex items-center gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5 text-accent"></i> 07-223 7471</p>
+            <p class="flex items-center gap-1.5"><i data-lucide="mail" class="w-3.5 h-3.5 text-accent"></i> jpnj@johor.gov.my</p>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-semibold text-accent mb-4 text-xs uppercase tracking-widest">Ikuti Kami</h4>
+          <div class="flex gap-3">
+            <a href="#" class="w-9 h-9 bg-white/10 hover:bg-accent rounded-lg flex items-center justify-center transition"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+            <a href="#" class="w-9 h-9 bg-white/10 hover:bg-accent rounded-lg flex items-center justify-center transition"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+            <a href="#" class="w-9 h-9 bg-white/10 hover:bg-accent rounded-lg flex items-center justify-center transition"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/10 mt-10 pt-6 text-center text-white/40 text-xs">
+        © 2024 Jabatan Perhutanan Negeri Johor. Hak Cipta Terpelihara.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

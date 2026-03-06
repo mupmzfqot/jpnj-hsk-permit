@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistem Permit HSK Negeri Johor — JPNJ</title>
+  <script type="module" crossorigin src="/hsk-johor-permit/assets/main-EgACJ2bD.js"></script>
+  <link rel="stylesheet" crossorigin href="/hsk-johor-permit/assets/main-Bhd_LqCS.css">
+</head>
+<body>
+
+  <!-- Utility Bar -->
+  <div class="bg-primary-dark text-white text-xs py-1.5">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+      <span class="flex items-center gap-1.5">
+        <i data-lucide="tree-pine" class="w-3.5 h-3.5 text-accent"></i>
+        Portal Rasmi JPNJ | Johor
+      </span>
+      <div class="hidden sm:flex items-center gap-4 text-white/70">
+        <a href="#" class="hover:text-white transition">Hubungi Kami</a>
+        <span class="text-white/30">|</span>
+        <a href="#" class="hover:text-white transition">Soalan Lazim</a>
+        <span class="text-white/30">|</span>
+        <a href="#" class="hover:text-white transition font-semibold text-white">BM</a>
+        <span class="text-white/30">/</span>
+        <a href="#" class="hover:text-white transition">EN</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="bg-primary sticky top-0 z-50 shadow-lg" x-data="{ open: false }">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center">
+          <img src="/hsk-johor-permit/assets/logo-Clln_BRm.svg" alt="Jabatan Perhutanan Negeri Johor" class="h-10 w-auto">
+        </a>
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-0.5">
+          <a href="index.html" class="text-white bg-white/15 px-3 py-2 rounded text-sm font-medium">Utama</a>
+          <a href="apply.html" class="text-white/85 hover:text-white hover:bg-white/10 px-3 py-2 rounded text-sm transition">Permohonan</a>
+          <a href="status.html" class="text-white/85 hover:text-white hover:bg-white/10 px-3 py-2 rounded text-sm transition">Semak Status</a>
+          <a href="payment.html" class="text-white/85 hover:text-white hover:bg-white/10 px-3 py-2 rounded text-sm transition">Bayaran</a>
+          <a href="#" class="text-white/85 hover:text-white hover:bg-white/10 px-3 py-2 rounded text-sm transition">Panduan</a>
+        </div>
+        <!-- Right Actions -->
+        <div class="hidden md:flex items-center gap-2">
+          <a href="admin/login.html" class="border border-white/40 text-white hover:bg-white/10 px-4 py-1.5 rounded text-sm transition">Log Masuk</a>
+          <a href="apply.html" class="bg-accent hover:bg-yellow-600 text-white px-4 py-1.5 rounded text-sm font-semibold transition">Daftar</a>
+        </div>
+        <!-- Hamburger -->
+        <button @click="open = !open" class="md:hidden text-white p-2 rounded hover:bg-white/10 transition">
+          <i data-lucide="menu" x-show="!open" class="w-5 h-5"></i>
+          <i data-lucide="x" x-show="open" class="w-5 h-5" style="display:none"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Drawer -->
+    <div x-show="open" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" class="md:hidden bg-primary-dark border-t border-white/10 px-4 py-3 space-y-1" style="display:none">
+      <a href="index.html" class="block text-white bg-white/10 px-3 py-2 rounded text-sm">Utama</a>
+      <a href="apply.html" class="block text-white/85 hover:text-white hover:bg-white/10 px-3 py-2 rounded text-sm transition">Permohonan</a>
+      <a href="status.html" class="block text-white/85 hover:text-white hover:bg-white/10 px-3 py-2 rounded text-sm transition">Semak Status</a>
+      <a href="payment.html" class="block text-white/85 hover:text-white hover:bg-white/10 px-3 py-2 rounded text-sm transition">Bayaran</a>
+      <a href="#" class="block text-white/85 hover:text-white hover:bg-white/10 px-3 py-2 rounded text-sm transition">Panduan</a>
+      <div class="pt-2 pb-1 flex gap-2">
+        <a href="admin/login.html" class="flex-1 text-center border border-white/40 text-white px-3 py-2 rounded text-sm transition">Log Masuk</a>
+        <a href="apply.html" class="flex-1 text-center bg-accent text-white px-3 py-2 rounded text-sm font-semibold transition">Daftar</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="relative min-h-[80vh] flex items-center overflow-hidden" style="background: linear-gradient(135deg, #0f2410 0%, #1a3d1a 35%, #2d6a2d 70%, #3a7d3a 100%);">
+    <!-- Decorative circles -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full -translate-x-1/2 translate-y-1/2"></div>
+    <div class="relative max-w-7xl mx-auto px-4 py-20 text-center">
+      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/80 text-xs px-4 py-1.5 rounded-full mb-6">
+        <i data-lucide="shield-check" class="w-3.5 h-3.5 text-accent"></i>
+        Sistem Rasmi Jabatan Perhutanan Negeri Johor
+      </div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 font-heading">
+        Sistem Permit Memasuki<br class="hidden md:block" />
+        <span class="text-accent">Hutan Simpanan Kekal</span>
+      </h1>
+      <p class="text-white/75 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+        Mohon permit anda secara dalam talian dengan mudah, selamat dan pantas. Lindungi hutan, nikmati alam semula jadi Johor.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="apply.html" class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-yellow-600 text-white px-8 py-4 rounded-lg text-base font-semibold transition shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform">
+          <i data-lucide="file-plus" class="w-5 h-5"></i>
+          Mohon Permit Sekarang
+        </a>
+        <a href="status.html" class="inline-flex items-center justify-center gap-2 border-2 border-white/50 hover:border-white text-white hover:bg-white/10 px-8 py-4 rounded-lg text-base font-semibold transition">
+          <i data-lucide="search" class="w-5 h-5"></i>
+          Semak Status Permohonan
+        </a>
+      </div>
+      <div class="mt-10 flex items-center justify-center gap-2 text-white/60 text-sm">
+        <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+        Diiktiraf oleh Jabatan Perhutanan Negeri Johor
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Strip -->
+  <div class="bg-white border-y border-border">
+    <div class="max-w-7xl mx-auto px-4 py-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <div class="text-3xl font-bold text-primary font-heading">12,450+</div>
+          <div class="text-sm text-gray-500 mt-1">Permit Dikeluarkan</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-primary font-heading">18</div>
+          <div class="text-sm text-gray-500 mt-1">Hutan Simpanan Kekal</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-primary font-heading">98%</div>
+          <div class="text-sm text-gray-500 mt-1">Kepuasan Pengguna</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-primary font-heading">24/7</div>
+          <div class="text-sm text-gray-500 mt-1">Perkhidmatan Dalam Talian</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Access Cards -->
+  <section class="bg-surface py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl font-bold text-text font-heading">Akses Pantas</h2>
+        <p class="text-gray-500 mt-2">Pilih perkhidmatan yang anda perlukan</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href="apply.html" class="bg-white rounded-xl p-6 border border-border shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 group text-center">
+          <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+            <i data-lucide="file-plus" class="w-7 h-7 text-primary group-hover:text-white transition-colors"></i>
+          </div>
+          <h3 class="font-semibold text-text mb-1">Mohon Permit Baru</h3>
+          <p class="text-sm text-gray-500">Isi borang permohonan permit HSK</p>
+        </a>
+        <a href="status.html" class="bg-white rounded-xl p-6 border border-border shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 group text-center">
+          <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-600 transition-colors">
+            <i data-lucide="search" class="w-7 h-7 text-blue-600 group-hover:text-white transition-colors"></i>
+          </div>
+          <h3 class="font-semibold text-text mb-1">Semak Status Permohonan</h3>
+          <p class="text-sm text-gray-500">Semak status permohonan anda</p>
+        </a>
+        <a href="payment.html" class="bg-white rounded-xl p-6 border border-border shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 group text-center">
+          <div class="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-600 transition-colors">
+            <i data-lucide="credit-card" class="w-7 h-7 text-teal-600 group-hover:text-white transition-colors"></i>
+          </div>
+          <h3 class="font-semibold text-text mb-1">Bayaran Online</h3>
+          <p class="text-sm text-gray-500">Buat bayaran permit secara dalam talian</p>
+        </a>
+        <a href="permit.html" class="bg-white rounded-xl p-6 border border-border shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 group text-center">
+          <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-orange-500 transition-colors">
+            <i data-lucide="download" class="w-7 h-7 text-orange-500 group-hover:text-white transition-colors"></i>
+          </div>
+          <h3 class="font-semibold text-text mb-1">Muat Turun Permit</h3>
+          <p class="text-sm text-gray-500">Muat turun permit digital anda</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HSK Locations -->
+  <section class="bg-white py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl font-bold text-text font-heading">Hutan Simpanan Kekal di Johor</h2>
+        <p class="text-gray-500 mt-2">Pilih destinasi alam semula jadi anda</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- HSK Gunung Ledang -->
+        <div class="rounded-xl border border-border overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+          <div class="bg-primary px-5 py-4">
+            <div class="flex items-center gap-2 text-white">
+              <i data-lucide="mountain" class="w-5 h-5 text-accent"></i>
+              <h3 class="font-semibold font-heading">HSK Gunung Ledang</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-1.5 text-gray-500 text-sm mb-3">
+              <i data-lucide="map-pin" class="w-4 h-4"></i>
+              Segahar, Johor
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="bg-green-100 text-green-700 text-xs px-2.5 py-1 rounded-full font-medium">Kapasiti: 50 orang/hari</span>
+              <span class="bg-green-100 text-green-700 text-xs px-2.5 py-1 rounded-full font-medium">Aktif</span>
+            </div>
+            <a href="apply.html" class="block w-full text-center bg-primary hover:bg-primary-light text-white py-2 rounded-lg text-sm font-medium transition">Mohon Permit</a>
+          </div>
+        </div>
+        <!-- HSK Endau-Rompin -->
+        <div class="rounded-xl border border-border overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+          <div class="bg-primary px-5 py-4">
+            <div class="flex items-center gap-2 text-white">
+              <i data-lucide="trees" class="w-5 h-5 text-accent"></i>
+              <h3 class="font-semibold font-heading">HSK Endau-Rompin</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-1.5 text-gray-500 text-sm mb-3">
+              <i data-lucide="map-pin" class="w-4 h-4"></i>
+              Mersing, Johor
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="bg-green-100 text-green-700 text-xs px-2.5 py-1 rounded-full font-medium">Kapasiti: 30 orang/hari</span>
+              <span class="bg-green-100 text-green-700 text-xs px-2.5 py-1 rounded-full font-medium">Aktif</span>
+            </div>
+            <a href="apply.html" class="block w-full text-center bg-primary hover:bg-primary-light text-white py-2 rounded-lg text-sm font-medium transition">Mohon Permit</a>
+          </div>
+        </div>
+        <!-- HSK Gunung Pulai -->
+        <div class="rounded-xl border border-border overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+          <div class="bg-primary px-5 py-4">
+            <div class="flex items-center gap-2 text-white">
+              <i data-lucide="mountain" class="w-5 h-5 text-accent"></i>
+              <h3 class="font-semibold font-heading">HSK Gunung Pulai</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-1.5 text-gray-500 text-sm mb-3">
+              <i data-lucide="map-pin" class="w-4 h-4"></i>
+              Kulai, Johor
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="bg-green-100 text-green-700 text-xs px-2.5 py-1 rounded-full font-medium">Kapasiti: 40 orang/hari</span>
+              <span class="bg-red-100 text-red-700 text-xs px-2.5 py-1 rounded-full font-medium">Penuh</span>
+            </div>
+            <a href="apply.html" class="block w-full text-center bg-primary hover:bg-primary-light text-white py-2 rounded-lg text-sm font-medium transition">Mohon Permit</a>
+          </div>
+        </div>
+        <!-- HSK Gunung Arong -->
+        <div class="rounded-xl border border-border overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+          <div class="bg-primary px-5 py-4">
+            <div class="flex items-center gap-2 text-white">
+              <i data-lucide="mountain" class="w-5 h-5 text-accent"></i>
+              <h3 class="font-semibold font-heading">HSK Gunung Arong</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-1.5 text-gray-500 text-sm mb-3">
+              <i data-lucide="map-pin" class="w-4 h-4"></i>
+              Mersing, Johor
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="bg-green-100 text-green-700 text-xs px-2.5 py-1 rounded-full font-medium">Kapasiti: 25 orang/hari</span>
+              <span class="bg-green-100 text-green-700 text-xs px-2.5 py-1 rounded-full font-medium">Aktif</span>
+            </div>
+            <a href="apply.html" class="block w-full text-center bg-primary hover:bg-primary-light text-white py-2 rounded-lg text-sm font-medium transition">Mohon Permit</a>
+          </div>
+        </div>
+        <!-- HSK Gunung Belumut -->
+        <div class="rounded-xl border border-border overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+          <div class="bg-primary px-5 py-4">
+            <div class="flex items-center gap-2 text-white">
+              <i data-lucide="mountain" class="w-5 h-5 text-accent"></i>
+              <h3 class="font-semibold font-heading">HSK Gunung Belumut</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-1.5 text-gray-500 text-sm mb-3">
+              <i data-lucide="map-pin" class="w-4 h-4"></i>
+              Kluang, Johor
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="bg-green-100 text-green-700 text-xs px-2.5 py-1 rounded-full font-medium">Kapasiti: 35 orang/hari</span>
+              <span class="bg-gray-100 text-gray-600 text-xs px-2.5 py-1 rounded-full font-medium">Tidak Aktif</span>
+            </div>
+            <button disabled class="block w-full text-center bg-gray-200 text-gray-400 py-2 rounded-lg text-sm font-medium cursor-not-allowed">Tidak Tersedia</button>
+          </div>
+        </div>
+        <!-- HSK Panti -->
+        <div class="rounded-xl border border-border overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+          <div class="bg-primary px-5 py-4">
+            <div class="flex items-center gap-2 text-white">
+              <i data-lucide="trees" class="w-5 h-5 text-accent"></i>
+              <h3 class="font-semibold font-heading">HSK Panti</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-1.5 text-gray-500 text-sm mb-3">
+              <i data-lucide="map-pin" class="w-4 h-4"></i>
+              Kota Tinggi, Johor
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="bg-green-100 text-green-700 text-xs px-2.5 py-1 rounded-full font-medium">Kapasiti: 20 orang/hari</span>
+              <span class="bg-green-100 text-green-700 text-xs px-2.5 py-1 rounded-full font-medium">Aktif</span>
+            </div>
+            <a href="apply.html" class="block w-full text-center bg-primary hover:bg-primary-light text-white py-2 rounded-lg text-sm font-medium transition">Mohon Permit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="bg-surface py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl font-bold text-text font-heading">Cara Permohonan</h2>
+        <p class="text-gray-500 mt-2">Proses mudah dalam 3 langkah sahaja</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+        <!-- Connector lines (desktop) -->
+        <div class="hidden md:block absolute top-10 left-1/3 right-1/3 h-0.5 bg-border z-0"></div>
+        <!-- Step 1 -->
+        <div class="text-center relative z-10">
+          <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg">
+            <i data-lucide="file-text" class="w-9 h-9 text-white"></i>
+          </div>
+          <div class="inline-block bg-accent text-white text-xs font-bold px-2.5 py-0.5 rounded-full mb-3">LANGKAH 1</div>
+          <h3 class="font-bold text-text text-lg font-heading mb-2">Isi Borang Permohonan</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Lengkapkan maklumat peribadi, pilih HSK, tarikh lawatan dan senarai ahli kumpulan.</p>
+        </div>
+        <!-- Step 2 -->
+        <div class="text-center relative z-10">
+          <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg">
+            <i data-lucide="credit-card" class="w-9 h-9 text-white"></i>
+          </div>
+          <div class="inline-block bg-accent text-white text-xs font-bold px-2.5 py-0.5 rounded-full mb-3">LANGKAH 2</div>
+          <h3 class="font-bold text-text text-lg font-heading mb-2">Buat Bayaran Online</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Bayar secara selamat melalui FPX, kad kredit/debit atau e-dompet pilihan anda.</p>
+        </div>
+        <!-- Step 3 -->
+        <div class="text-center relative z-10">
+          <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg">
+            <i data-lucide="download-cloud" class="w-9 h-9 text-white"></i>
+          </div>
+          <div class="inline-block bg-accent text-white text-xs font-bold px-2.5 py-0.5 rounded-full mb-3">LANGKAH 3</div>
+          <h3 class="font-bold text-text text-lg font-heading mb-2">Muat Turun Permit Digital</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Permit digital anda sedia untuk dimuat turun dan dicetak setelah pembayaran disahkan.</p>
+        </div>
+      </div>
+      <div class="text-center mt-10">
+        <a href="apply.html" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white px-8 py-3.5 rounded-lg font-semibold transition shadow-md hover:shadow-lg">
+          <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          Mulakan Permohonan
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-primary-dark text-white">
+    <div class="max-w-7xl mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- About -->
+        <div>
+          <div class="mb-4">
+            <img src="/hsk-johor-permit/assets/logo-Clln_BRm.svg" alt="Jabatan Perhutanan Negeri Johor" class="h-8 w-auto">
+          </div>
+          <p class="text-white/60 text-sm leading-relaxed">Jabatan Perhutanan Negeri Johor komited dalam pengurusan hutan yang mampan untuk generasi akan datang.</p>
+        </div>
+        <!-- Quick Links -->
+        <div>
+          <h4 class="font-semibold text-accent mb-4 text-xs uppercase tracking-widest">Pautan Pantas</h4>
+          <ul class="space-y-2 text-sm text-white/65">
+            <li><a href="index.html" class="hover:text-white transition">Laman Utama</a></li>
+            <li><a href="apply.html" class="hover:text-white transition">Mohon Permit</a></li>
+            <li><a href="status.html" class="hover:text-white transition">Semak Status</a></li>
+            <li><a href="payment.html" class="hover:text-white transition">Bayaran Online</a></li>
+            <li><a href="#" class="hover:text-white transition">Panduan Pengguna</a></li>
+          </ul>
+        </div>
+        <!-- Contact -->
+        <div>
+          <h4 class="font-semibold text-accent mb-4 text-xs uppercase tracking-widest">Hubungi Kami</h4>
+          <div class="space-y-1.5 text-sm text-white/65">
+            <p>Jabatan Perhutanan Negeri Johor</p>
+            <p>Wisma Sumber Alam, Jalan Bukit Timbalan</p>
+            <p>80000 Johor Bahru, Johor</p>
+            <p class="mt-3 flex items-center gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5 text-accent"></i> 07-223 7471</p>
+            <p class="flex items-center gap-1.5"><i data-lucide="mail" class="w-3.5 h-3.5 text-accent"></i> jpnj@johor.gov.my</p>
+          </div>
+        </div>
+        <!-- Social -->
+        <div>
+          <h4 class="font-semibold text-accent mb-4 text-xs uppercase tracking-widest">Ikuti Kami</h4>
+          <div class="flex gap-3 mb-5">
+            <a href="#" class="w-9 h-9 bg-white/10 hover:bg-accent rounded-lg flex items-center justify-center transition"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+            <a href="#" class="w-9 h-9 bg-white/10 hover:bg-accent rounded-lg flex items-center justify-center transition"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+            <a href="#" class="w-9 h-9 bg-white/10 hover:bg-accent rounded-lg flex items-center justify-center transition"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+          </div>
+          <p class="text-white/50 text-xs">Ikuti kami untuk maklumat terkini mengenai hutan simpanan kekal Johor.</p>
+        </div>
+      </div>
+      <div class="border-t border-white/10 mt-10 pt-6 text-center text-white/40 text-xs">
+        © 2024 Jabatan Perhutanan Negeri Johor. Hak Cipta Terpelihara.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
