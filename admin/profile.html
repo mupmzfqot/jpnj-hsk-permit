@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profil Saya — JPNJ Admin</title>
+  <script type="module" crossorigin src="/assets/main-DJ31oqiK.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-DVg0MzLM.css">
+</head>
+<body class="bg-surface">
+<div class="flex min-h-screen" x-data="{ sidebarOpen: true }">
+
+  <!-- Sidebar Overlay (mobile) -->
+  <div x-show="sidebarOpen" @click="sidebarOpen = false" class="fixed inset-0 bg-black/50 z-20 lg:hidden" style="display:none"></div>
+
+  <!-- Sidebar -->
+  <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'" class="fixed inset-y-0 left-0 w-64 bg-primary-dark z-30 flex flex-col transition-transform duration-200">
+    <div class="px-5 py-4 border-b border-white/10">
+      <img src="/assets/logo-Clln_BRm.svg" alt="Jabatan Perhutanan Negeri Johor" class="h-8 w-auto">
+      <div class="text-white/45 text-xs mt-1">Admin Panel</div>
+    </div>
+    <nav class="flex-1 px-3 py-4 overflow-y-auto space-y-0.5">
+      <p class="text-white/35 text-xs font-semibold uppercase tracking-widest px-3 py-1.5">Utama</p>
+      <a href="index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="layout-dashboard" class="w-4 h-4"></i>Dashboard
+      </a>
+      <p class="text-white/35 text-xs font-semibold uppercase tracking-widest px-3 pt-4 pb-1.5">Permohonan</p>
+      <a href="applications.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="list" class="w-4 h-4"></i>Senarai Permohonan
+      </a>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="file-plus" class="w-4 h-4"></i>Permohonan Baru
+      </a>
+      <a href="#" class="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <span class="flex items-center gap-3"><i data-lucide="clock" class="w-4 h-4"></i>Semakan Pending</span>
+        <span class="bg-yellow-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[1.25rem] text-center">43</span>
+      </a>
+      <p class="text-white/35 text-xs font-semibold uppercase tracking-widest px-3 pt-4 pb-1.5">Pengurusan</p>
+      <a href="hsk.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="trees" class="w-4 h-4"></i>Pengurusan HSK
+      </a>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="users" class="w-4 h-4"></i>Pengguna
+      </a>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="user-check" class="w-4 h-4"></i>Pegawai
+      </a>
+      <p class="text-white/35 text-xs font-semibold uppercase tracking-widest px-3 pt-4 pb-1.5">Laporan</p>
+      <a href="reports.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="bar-chart-3" class="w-4 h-4"></i>Laporan &amp; Statistik
+      </a>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="download" class="w-4 h-4"></i>Eksport Data
+      </a>
+      <p class="text-white/35 text-xs font-semibold uppercase tracking-widest px-3 pt-4 pb-1.5">Sistem</p>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="settings" class="w-4 h-4"></i>Tetapan
+      </a>
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/75 hover:text-white hover:bg-white/10 border-l-4 border-transparent transition">
+        <i data-lucide="activity" class="w-4 h-4"></i>Log Aktiviti
+      </a>
+    </nav>
+    <div class="px-4 py-4 border-t border-white/10">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+          <span class="text-white font-bold text-sm">ZK</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-white text-sm font-medium truncate">Encik Zulkifli</p>
+          <p class="text-white/45 text-xs truncate">Pegawai Perhutanan</p>
+        </div>
+        <a href="../index.html" class="text-white/45 hover:text-white transition" title="Log Keluar">
+          <i data-lucide="log-out" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="flex-1 flex flex-col min-h-screen transition-all duration-200" :class="sidebarOpen ? 'ml-64' : 'ml-0'">
+
+    <!-- Top Navbar -->
+    <header class="bg-white h-16 border-b border-border shadow-sm flex items-center px-6 sticky top-0 z-20" x-data="{ dropOpen: false }">
+      <div class="flex items-center gap-3 flex-1">
+        <button @click="sidebarOpen = !sidebarOpen" class="text-gray-400 hover:text-text p-1 rounded-lg transition">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+        <nav class="flex items-center gap-1 text-sm">
+          <a href="index.html" class="text-gray-400 hover:text-primary transition">Utama</a>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-300"></i>
+          <span class="text-text font-medium">Profil Saya</span>
+        </nav>
+      </div>
+      <div class="flex items-center gap-2">
+        <button class="relative p-2 text-gray-500 hover:text-text hover:bg-surface rounded-lg transition">
+          <i data-lucide="bell" class="w-5 h-5"></i>
+          <span class="absolute top-1 right-1 w-4 h-4 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center">3</span>
+        </button>
+        <div class="relative">
+          <button @click="dropOpen = !dropOpen" class="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-surface transition">
+            <div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center">
+              <span class="text-white font-bold text-xs">ZK</span>
+            </div>
+            <span class="text-sm font-medium text-text">Encik Zulkifli</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-400"></i>
+          </button>
+          <div x-show="dropOpen" @click.away="dropOpen = false" x-transition class="absolute right-0 mt-1 w-48 bg-white border border-border rounded-xl shadow-lg py-1 z-50" style="display:none">
+            <a href="profile.html" class="flex items-center gap-2.5 px-4 py-2.5 text-sm text-primary font-medium hover:bg-surface transition"><i data-lucide="user" class="w-4 h-4"></i>Profil Saya</a>
+            <a href="#" class="flex items-center gap-2.5 px-4 py-2.5 text-sm text-text hover:bg-surface transition"><i data-lucide="settings" class="w-4 h-4 text-gray-400"></i>Tetapan</a>
+            <div class="border-t border-border my-1"></div>
+            <a href="../index.html" class="flex items-center gap-2.5 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition"><i data-lucide="log-out" class="w-4 h-4"></i>Log Keluar</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="flex-1 p-6" x-data="{
+      tab: 'profil',
+      saved: false,
+      pwSaved: false,
+      saving: false,
+      savePw: false,
+      showOld: false,
+      showNew: false,
+      showConfirm: false,
+      save() {
+        this.saving = true;
+        setTimeout(() => { this.saving = false; this.saved = true; setTimeout(() => this.saved = false, 3000); }, 1200);
+      },
+      savePassword() {
+        this.savePw = true;
+        setTimeout(() => { this.savePw = false; this.pwSaved = true; setTimeout(() => this.pwSaved = false, 3000); }, 1200);
+      }
+    }">
+
+      <!-- Page Header -->
+      <div class="mb-6">
+        <h1 class="text-2xl font-bold text-text">Profil Saya</h1>
+        <p class="text-gray-500 text-sm mt-1">Urus maklumat akaun dan keselamatan anda</p>
+      </div>
+
+      <!-- Profile Card -->
+      <div class="bg-white rounded-2xl border border-border shadow-sm mb-6 p-6">
+        <div class="flex items-center gap-5">
+          <div class="relative">
+            <div class="w-20 h-20 rounded-full bg-accent flex items-center justify-center text-white text-2xl font-bold select-none">ZK</div>
+            <button class="absolute bottom-0 right-0 w-7 h-7 bg-primary rounded-full flex items-center justify-center border-2 border-white hover:bg-primary-dark transition">
+              <i data-lucide="camera" class="w-3.5 h-3.5 text-white"></i>
+            </button>
+          </div>
+          <div>
+            <h2 class="text-lg font-bold text-text">Encik Zulkifli bin Kamarudin</h2>
+            <p class="text-sm text-gray-500">Pegawai Perhutanan Kanan</p>
+            <div class="flex items-center gap-2 mt-1.5">
+              <span class="bg-green-100 text-green-700 rounded-full px-2.5 py-0.5 text-xs font-semibold">Aktif</span>
+              <span class="text-xs text-gray-400">Ahli sejak Jan 2021</span>
+            </div>
+          </div>
+          <div class="ml-auto hidden sm:flex items-center gap-4 text-center">
+            <div>
+              <p class="text-xl font-bold text-primary">128</p>
+              <p class="text-xs text-gray-500">Permohonan Diproses</p>
+            </div>
+            <div class="w-px h-10 bg-border"></div>
+            <div>
+              <p class="text-xl font-bold text-primary">94%</p>
+              <p class="text-xs text-gray-500">Kadar Kelulusan</p>
+            </div>
+            <div class="w-px h-10 bg-border"></div>
+            <div>
+              <p class="text-xl font-bold text-primary">1.2h</p>
+              <p class="text-xs text-gray-500">Purata Masa Proses</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex gap-1 mb-6 bg-white border border-border rounded-xl p-1 w-fit shadow-sm">
+        <button @click="tab = 'profil'" :class="tab === 'profil' ? 'bg-primary text-white shadow' : 'text-gray-500 hover:text-text'" class="px-4 py-2 rounded-lg text-sm font-medium transition">
+          <span class="flex items-center gap-2"><i data-lucide="user" class="w-4 h-4"></i>Maklumat Peribadi</span>
+        </button>
+        <button @click="tab = 'keselamatan'" :class="tab === 'keselamatan' ? 'bg-primary text-white shadow' : 'text-gray-500 hover:text-text'" class="px-4 py-2 rounded-lg text-sm font-medium transition">
+          <span class="flex items-center gap-2"><i data-lucide="shield" class="w-4 h-4"></i>Keselamatan</span>
+        </button>
+        <button @click="tab = 'aktiviti'" :class="tab === 'aktiviti' ? 'bg-primary text-white shadow' : 'text-gray-500 hover:text-text'" class="px-4 py-2 rounded-lg text-sm font-medium transition">
+          <span class="flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4"></i>Log Aktiviti</span>
+        </button>
+      </div>
+
+      <!-- Tab: Maklumat Peribadi -->
+      <div x-show="tab === 'profil'" x-transition>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-2 bg-white rounded-2xl border border-border shadow-sm p-6">
+            <h3 class="font-semibold text-text mb-5 flex items-center gap-2">
+              <i data-lucide="user-circle" class="w-5 h-5 text-primary"></i>Maklumat Peribadi
+            </h3>
+            <form @submit.prevent="save()" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-text mb-1.5">Nama Penuh</label>
+                  <input type="text" value="Zulkifli bin Kamarudin" class="w-full border border-border rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-text mb-1.5">No. Kad Pengenalan</label>
+                  <input type="text" value="820514-01-5678" class="w-full border border-border rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" />
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-text mb-1.5">E-mel</label>
+                  <input type="email" value="zulkifli.kamarudin@johor.gov.my" class="w-full border border-border rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-text mb-1.5">No. Telefon</label>
+                  <input type="text" value="017-3456789" class="w-full border border-border rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" />
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-text mb-1.5">Jawatan</label>
+                  <input type="text" value="Pegawai Perhutanan Kanan" class="w-full border border-border rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-text mb-1.5">Bahagian / Unit</label>
+                  <select class="w-full border border-border rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary bg-white">
+                    <option>Pengurusan Hutan</option>
+                    <option selected>Perlesenan &amp; Permit</option>
+                    <option>Perlindungan Hutan</option>
+                    <option>Penguatkuasaan</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-text mb-1.5">Alamat Pejabat</label>
+                <textarea rows="2" class="w-full border border-border rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary resize-none">Jabatan Perhutanan Negeri Johor, Aras 14, Menara Ansar, 65 Jalan Trus, 80000 Johor Bahru, Johor</textarea>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-border">
+                <div x-show="saved" x-transition class="flex items-center gap-2 text-green-600 text-sm">
+                  <i data-lucide="check-circle" class="w-4 h-4"></i>Maklumat berjaya dikemaskini
+                </div>
+                <div x-show="!saved"></div>
+                <button type="submit" class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-lg text-sm font-medium transition ml-auto">
+                  <template x-if="saving">
+                    <svg class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg>
+                  </template>
+                  <template x-if="!saving">
+                    <i data-lucide="save" class="w-4 h-4"></i>
+                  </template>
+                  <span x-text="saving ? 'Menyimpan...' : 'Simpan Perubahan'"></span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="space-y-5">
+            <!-- Maklumat Akaun -->
+            <div class="bg-white rounded-2xl border border-border shadow-sm p-5">
+              <h3 class="font-semibold text-text mb-4 flex items-center gap-2">
+                <i data-lucide="id-card" class="w-4 h-4 text-primary"></i>Maklumat Akaun
+              </h3>
+              <dl class="space-y-3 text-sm">
+                <div>
+                  <dt class="text-gray-500 text-xs uppercase tracking-wide">ID Pengguna</dt>
+                  <dd class="font-medium text-text mt-0.5">USR-2021-0041</dd>
+                </div>
+                <div>
+                  <dt class="text-gray-500 text-xs uppercase tracking-wide">Nama Pengguna</dt>
+                  <dd class="font-medium text-text mt-0.5">zulkifli.k</dd>
+                </div>
+                <div>
+                  <dt class="text-gray-500 text-xs uppercase tracking-wide">Peranan</dt>
+                  <dd class="mt-0.5"><span class="bg-primary/10 text-primary rounded-full px-2.5 py-0.5 text-xs font-semibold">Pegawai Perhutanan</span></dd>
+                </div>
+                <div>
+                  <dt class="text-gray-500 text-xs uppercase tracking-wide">Tarikh Daftar</dt>
+                  <dd class="font-medium text-text mt-0.5">15 Januari 2021</dd>
+                </div>
+                <div>
+                  <dt class="text-gray-500 text-xs uppercase tracking-wide">Log Masuk Terakhir</dt>
+                  <dd class="font-medium text-text mt-0.5">13 Mac 2026, 08:42 pagi</dd>
+                </div>
+              </dl>
+            </div>
+
+            <!-- HSK Ditugaskan -->
+            <div class="bg-white rounded-2xl border border-border shadow-sm p-5">
+              <h3 class="font-semibold text-text mb-4 flex items-center gap-2">
+                <i data-lucide="trees" class="w-4 h-4 text-primary"></i>HSK Ditugaskan
+              </h3>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-center gap-2 text-text"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-primary flex-shrink-0"></i>HSK Gunung Ledang (Segahar)</li>
+                <li class="flex items-center gap-2 text-text"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-primary flex-shrink-0"></i>HSK Gunung Pulai (Kulai)</li>
+                <li class="flex items-center gap-2 text-text"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-primary flex-shrink-0"></i>HSK Gunung Belumut (Kluang)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab: Keselamatan -->
+      <div x-show="tab === 'keselamatan'" x-transition style="display:none">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-2 bg-white rounded-2xl border border-border shadow-sm p-6">
+            <h3 class="font-semibold text-text mb-5 flex items-center gap-2">
+              <i data-lucide="lock" class="w-5 h-5 text-primary"></i>Tukar Kata Laluan
+            </h3>
+            <form @submit.prevent="savePassword()" class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-text mb-1.5">Kata Laluan Semasa</label>
+                <div class="relative">
+                  <input :type="showOld ? 'text' : 'password'" placeholder="Masukkan kata laluan semasa" class="w-full border border-border rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary pr-10" />
+                  <button type="button" @click="showOld = !showOld" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-text transition">
+                    <i :data-lucide="showOld ? 'eye-off' : 'eye'" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-text mb-1.5">Kata Laluan Baru</label>
+                <div class="relative">
+                  <input :type="showNew ? 'text' : 'password'" placeholder="Sekurang-kurangnya 8 aksara" class="w-full border border-border rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary pr-10" />
+                  <button type="button" @click="showNew = !showNew" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-text transition">
+                    <i :data-lucide="showNew ? 'eye-off' : 'eye'" class="w-4 h-4"></i>
+                  </button>
+                </div>
+                <p class="text-xs text-gray-400 mt-1">Gunakan gabungan huruf besar, huruf kecil, nombor dan simbol.</p>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-text mb-1.5">Sahkan Kata Laluan Baru</label>
+                <div class="relative">
+                  <input :type="showConfirm ? 'text' : 'password'" placeholder="Masukkan semula kata laluan baru" class="w-full border border-border rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary pr-10" />
+                  <button type="button" @click="showConfirm = !showConfirm" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-text transition">
+                    <i :data-lucide="showConfirm ? 'eye-off' : 'eye'" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-border">
+                <div x-show="pwSaved" x-transition class="flex items-center gap-2 text-green-600 text-sm">
+                  <i data-lucide="check-circle" class="w-4 h-4"></i>Kata laluan berjaya dikemaskini
+                </div>
+                <div x-show="!pwSaved"></div>
+                <button type="submit" class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-lg text-sm font-medium transition ml-auto">
+                  <template x-if="savePw">
+                    <svg class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg>
+                  </template>
+                  <template x-if="!savePw">
+                    <i data-lucide="key" class="w-4 h-4"></i>
+                  </template>
+                  <span x-text="savePw ? 'Menyimpan...' : 'Kemaskini Kata Laluan'"></span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="space-y-5">
+            <!-- Sesi Aktif -->
+            <div class="bg-white rounded-2xl border border-border shadow-sm p-5">
+              <h3 class="font-semibold text-text mb-4 flex items-center gap-2">
+                <i data-lucide="monitor" class="w-4 h-4 text-primary"></i>Sesi Aktif
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3 p-3 bg-green-50 rounded-xl border border-green-200">
+                  <i data-lucide="monitor" class="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0"></i>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-text">Windows 11 — Chrome</p>
+                    <p class="text-xs text-gray-500 mt-0.5">Johor Bahru · Sesi semasa</p>
+                  </div>
+                  <span class="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0"></span>
+                </li>
+                <li class="flex items-start gap-3 p-3 rounded-xl border border-border">
+                  <i data-lucide="smartphone" class="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0"></i>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-text">Android — Chrome</p>
+                    <p class="text-xs text-gray-500 mt-0.5">Johor Bahru · 2 jam lepas</p>
+                  </div>
+                  <button class="text-xs text-red-500 hover:text-red-700 transition flex-shrink-0">Tamat</button>
+                </li>
+              </ul>
+              <button class="mt-3 w-full text-xs text-red-500 hover:text-red-700 font-medium py-2 border border-red-200 rounded-lg hover:bg-red-50 transition">
+                Tamatkan Semua Sesi Lain
+              </button>
+            </div>
+
+            <!-- Keselamatan -->
+            <div class="bg-white rounded-2xl border border-border shadow-sm p-5">
+              <h3 class="font-semibold text-text mb-4 flex items-center gap-2">
+                <i data-lucide="shield-check" class="w-4 h-4 text-primary"></i>Status Keselamatan
+              </h3>
+              <ul class="space-y-2.5 text-sm">
+                <li class="flex items-center justify-between">
+                  <span class="text-gray-600 flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-green-500"></i>E-mel disahkan</span>
+                  <span class="text-green-600 text-xs font-medium">Selamat</span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <span class="text-gray-600 flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-green-500"></i>Kata laluan kukuh</span>
+                  <span class="text-green-600 text-xs font-medium">Selamat</span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <span class="text-gray-600 flex items-center gap-2"><i data-lucide="alert-circle" class="w-3.5 h-3.5 text-yellow-500"></i>Pengesahan 2 faktor</span>
+                  <button class="text-primary text-xs font-medium hover:underline">Aktifkan</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab: Log Aktiviti -->
+      <div x-show="tab === 'aktiviti'" x-transition style="display:none">
+        <div class="bg-white rounded-2xl border border-border shadow-sm">
+          <div class="px-6 py-4 border-b border-border flex items-center justify-between">
+            <h3 class="font-semibold text-text flex items-center gap-2">
+              <i data-lucide="activity" class="w-5 h-5 text-primary"></i>Log Aktiviti Terkini
+            </h3>
+            <span class="text-xs text-gray-400">30 hari terakhir</span>
+          </div>
+          <ul class="divide-y divide-border">
+            <li class="px-6 py-4 flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="check-circle" class="w-4 h-4 text-green-600"></i>
+              </div>
+              <div class="flex-1">
+                <p class="text-sm text-text font-medium">Permohonan <span class="text-primary">HSK-2024-00847</span> diluluskan</p>
+                <p class="text-xs text-gray-500 mt-0.5">Ahmad Firdaus bin Abdullah — HSK Gunung Ledang (Segahar)</p>
+              </div>
+              <span class="text-xs text-gray-400 flex-shrink-0">Hari ini, 10:15 pagi</span>
+            </li>
+            <li class="px-6 py-4 flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="eye" class="w-4 h-4 text-blue-600"></i>
+              </div>
+              <div class="flex-1">
+                <p class="text-sm text-text font-medium">Permohonan <span class="text-primary">HSK-2024-00846</span> disemak</p>
+                <p class="text-xs text-gray-500 mt-0.5">Nurul Ain binti Mohd Noor — HSK Gunung Pulai (Kulai)</p>
+              </div>
+              <span class="text-xs text-gray-400 flex-shrink-0">Hari ini, 09:48 pagi</span>
+            </li>
+            <li class="px-6 py-4 flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="x-circle" class="w-4 h-4 text-red-600"></i>
+              </div>
+              <div class="flex-1">
+                <p class="text-sm text-text font-medium">Permohonan <span class="text-primary">HSK-2024-00841</span> ditolak</p>
+                <p class="text-xs text-gray-500 mt-0.5">Mohd Hafiz bin Yusof — Dokumen tidak lengkap</p>
+              </div>
+              <span class="text-xs text-gray-400 flex-shrink-0">Semalam, 3:22 ptg</span>
+            </li>
+            <li class="px-6 py-4 flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="check-circle" class="w-4 h-4 text-green-600"></i>
+              </div>
+              <div class="flex-1">
+                <p class="text-sm text-text font-medium">Permohonan <span class="text-primary">HSK-2024-00839</span> diluluskan</p>
+                <p class="text-xs text-gray-500 mt-0.5">Siti Rahayu binti Hassan — HSK Gunung Belumut (Kluang)</p>
+              </div>
+              <span class="text-xs text-gray-400 flex-shrink-0">Semalam, 11:05 pagi</span>
+            </li>
+            <li class="px-6 py-4 flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="edit" class="w-4 h-4 text-yellow-600"></i>
+              </div>
+              <div class="flex-1">
+                <p class="text-sm text-text font-medium">Maklumat profil dikemaskini</p>
+                <p class="text-xs text-gray-500 mt-0.5">No. telefon dan alamat pejabat diubah</p>
+              </div>
+              <span class="text-xs text-gray-400 flex-shrink-0">10 Mac 2026, 2:10 ptg</span>
+            </li>
+            <li class="px-6 py-4 flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="check-circle" class="w-4 h-4 text-green-600"></i>
+              </div>
+              <div class="flex-1">
+                <p class="text-sm text-text font-medium">Permohonan <span class="text-primary">HSK-2024-00835</span> diluluskan</p>
+                <p class="text-xs text-gray-500 mt-0.5">Faizal bin Ibrahim — HSK Gunung Ledang (Segahar)</p>
+              </div>
+              <span class="text-xs text-gray-400 flex-shrink-0">8 Mac 2026, 9:30 pagi</span>
+            </li>
+            <li class="px-6 py-4 flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="log-in" class="w-4 h-4 text-gray-500"></i>
+              </div>
+              <div class="flex-1">
+                <p class="text-sm text-text font-medium">Log masuk berjaya</p>
+                <p class="text-xs text-gray-500 mt-0.5">Windows 11 — Chrome · Johor Bahru</p>
+              </div>
+              <span class="text-xs text-gray-400 flex-shrink-0">8 Mac 2026, 8:55 pagi</span>
+            </li>
+          </ul>
+          <div class="px-6 py-4 border-t border-border">
+            <button class="text-sm text-primary hover:underline font-medium">Lihat semua log aktiviti →</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>
