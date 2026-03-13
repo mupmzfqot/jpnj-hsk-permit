@@ -17,6 +17,7 @@ export default defineConfig({
         adminDetail:       resolve(__dirname, 'admin/application-detail.html'),
         adminHsk:          resolve(__dirname, 'admin/hsk.html'),
         adminReports:      resolve(__dirname, 'admin/reports.html'),
+        adminProfile:      resolve(__dirname, 'admin/profile.html'),
       }
     }
   }
